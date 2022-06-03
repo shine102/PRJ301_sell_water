@@ -34,10 +34,10 @@
 						</div>
 					</div>
 				</div>
-				<%@include file="./component/order.jsp" %>
-				<%@include file="./component/blog.jsp" %>
-				<%@include file="./component/footer.jsp" %>
 			</div>
+			<%@include file="./component/order.jsp" %>
+			<%@include file="./component/blog.jsp" %>
+			<%@include file="./component/footer.jsp" %>
 	</body>
 
 	</html>

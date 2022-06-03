@@ -16,7 +16,7 @@
     </head>
     <body>
         <%@include file="./component/navbar.jsp" %>
-        <%@include file="./component/order.jsp" %>
+        <%@include file="./component/blog.jsp" %>
         <%@include file="./component/footer.jsp" %>
     </body>
 </html>
