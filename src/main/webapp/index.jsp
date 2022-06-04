@@ -5,9 +5,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>The Sell Water House Delivery</title>
-		<script src="./js/bootstrap.bundle.js"></script>
+		<script src="./js/bootstrap.js"></script>
 		<link rel="shortcut icon" href="./img/footer_logo.png" type="image/x-icon">
-		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/bootstrap.css">
 	</head>
 
 	<body>
@@ -23,13 +23,13 @@
 							aria-label="Slide 3"></button>
 					</div>
 					<div class="carousel-inner" style="padding: 20px 20px 20px 20px;">
-						<div class="carousel-item active" data-bs-interval="3000">
+						<div class="carousel-item active" data-bs-interval="5000">
 							<img src="./img/case_1.jpg" class="d-block w-100" alt="1">
 						</div>
-						<div class="carousel-item" data-bs-interval="3000">
+						<div class="carousel-item" data-bs-interval="5000">
 							<img src="./img/case_2.jpg" class="d-block w-100" alt="2">
 						</div>
-						<div class="carousel-item" data-bs-interval="3000">
+						<div class="carousel-item" data-bs-interval="5000">
 							<img src="./img/case_3.jpg" class="d-block w-100" alt="3">
 						</div>
 					</div>
