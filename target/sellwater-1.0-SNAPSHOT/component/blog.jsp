@@ -9,12 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="./css/order.css">
     </head>
     <body>
         <br>
         <div class="container-xxl">
-            <h3 style="text-align: center;">📰 News</h3>
+            <h4 style="text-align: center;">📰 News</h4>
         </div>
     </body>
 </html>

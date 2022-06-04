@@ -6,5 +6,7 @@
 }
 
 .menu-title{
-    text-align: center;
+    font-size: 0.5rem;
+    color:rgb(111, 108, 108);
+    text-align: center; 
 }
