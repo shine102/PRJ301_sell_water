@@ -4,9 +4,6 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>JSP Page</title>
-		<script src="../js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
 		<link rel="stylesheet" href="./css/navbar.css">
 	</head>
 

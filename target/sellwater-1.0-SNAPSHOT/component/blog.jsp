@@ -9,11 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <script src="../js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/order.css">
     </head>
     <body>
-        
+        <br>
+        <div class="container-xxl">
+            <h3 style="text-align: center;">📰 News</h3>
+        </div>
     </body>
 </html>
