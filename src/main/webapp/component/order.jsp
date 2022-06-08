@@ -8,7 +8,7 @@
     </head>
     <body>
         <br>
-        <div class="container-xxl" >
+        <div class="container-md" >
             <h4 style="text-align: center;">☕ Product from sell water house</h4>
             <br>
             <div class="row row-cols-6 justify-content-md-center">

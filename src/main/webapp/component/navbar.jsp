@@ -1,14 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 	<!DOCTYPE html>
 	<html>
-
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="./css/navbar.css">
 	</head>
-
 	<body>
-		<nav class="navbar navbar-expand-xxl bg-warning">
+		<nav class="navbar navbar-expand-xxl sticky-top bg-warning">
 			<div class="container-fluid">
 				<a href="./index.jsp" class="narbar-brand">
 					<img src="./img/logo.svg" alt="logo">
@@ -27,6 +25,9 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="./about.jsp">About Us</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./admin.jsp">Login</a>
 						</li>
 					</ul>
 				</div>
