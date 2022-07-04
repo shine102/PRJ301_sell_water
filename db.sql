@@ -1,6 +1,17 @@
 -- create database
 create database SellWater;
 
+-- create table category_tab
+create table if not exists category_tab(
+    id int PRIMARY KEY AUTOINCREMENT,
+    category_name varchar(128) not null,
+    image_link varchar(256) not null
+)
+-- create sample data
+
+
+
+
 -- create table drink_tab
 create table if not exists drink_tab(
     id INT PRIMARY KEY AUTOINCREMENT,
@@ -9,15 +20,6 @@ create table if not exists drink_tab(
     image_link varchar(256) not null,
     category_id int REFERENCES category_tab(id)
     discount int not null
-)
-
-
-
--- create table category_tab
-create table if not exists category_tab(
-    id int PRIMARY KEY AUTOINCREMENT,
-    category_name varchar(128) not null,
-    image_link varchar(256) not null
 )
 
 -- create table blog_tab
