@@ -34,7 +34,6 @@ public class MainController {
             model.addAttribute("categoryList", categoryList);
             model.addAttribute("blogList", blogList);
         } catch (Exception e) {
-            //TODO: handle exception
             System.out.println("bruh");
         }
         
