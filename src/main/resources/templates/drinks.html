@@ -8,8 +8,8 @@
 	<link rel="stylesheet" href="./css/bootstrap.css">
     </head>
     <body>
-        <%@include file="./component/navbar.jsp" %>
-        <%@include file="./component/order.jsp" %>
-        <%@include file="./component/footer.jsp" %>
+        <div th:include="../static/components/navbar.html"></div>
+        <div th:include="../static/components/drink.html"></div>
+        <div th:include="../static/components/footer.html"></div>
     </body>
 </html>
