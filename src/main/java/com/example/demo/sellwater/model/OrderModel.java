@@ -9,26 +9,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "category_tab")
-public class CategoryModel {
+@Table(name = "order_tab")
+
+public class OrderModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "Please add category name")
-    @Column(name="category_name")
-    private String categoryName;
-    @NotBlank(message = "Please add image link")
-    @Column(name="image_link")
-    private String imageLink;
+    
+    @Column(name = "char_id")
+    private String charId;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "address")
+    private String address;
 
     @OneToMany(mappedBy = "id")
-    private List<DrinkModel> drinks = new ArrayList<>();
+    private List<OrderItemModel> orderItem = new ArrayList<>();
 
+    @OneToOne(mappedBy = "")
+    private FeedbackModel feedback;
 }
