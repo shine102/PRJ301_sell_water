@@ -11,11 +11,10 @@
             <h4 style="text-align: center;">☕ Product from sell water house</h4>
             <br>
             <div class="row row-cols-6 justify-content-md-center">
-                <div class="col-2">
-                    <img class="menu-img" src="https://res.cloudinary.com/dimxnh34h/image/upload/v1656841765/category/coffee/coffee_pb08wk.png" alt="coffee">
-                    <p class="menu-title">Coffee</p>
+                <div class="col-2" th:each = "category : ${categoryList}">
+                    <img class="menu-img" th:src="${category.imageLink}" th:alt="${category.categoryName}">
+                    <p class="menu-title" th:utext="${category.categoryName}"></p>
                 </div>
-                
             </div>
             <div class="row mb-4 mb-lg-5">
                 <div class="col-12 col-md-6 col-lg-3 col-xl-2 mt-2 mt-lg-3" onclick="addToCart(this)">
