@@ -2,6 +2,8 @@ package com.example.demo.sellwater.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +20,7 @@ public class CategoryControlller {
     private CategoryService categoryService = new CategoryService();
 
     @PostMapping("/category")
-    public CategoryModel saveCategory(@RequestBody CategoryModel category){
+    public CategoryModel saveCategory(@Valid @RequestBody CategoryModel category){
         return categoryService.saveCategory(category);
     }
 

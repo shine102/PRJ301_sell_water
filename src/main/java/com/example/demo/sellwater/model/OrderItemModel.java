@@ -11,26 +11,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name="drink_tab")
-public class DrinkModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+@Table(name = "order_item")
+public class OrderItemModel {
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="drink_name")
-    private String drinkName;
-    @Column(name="price")
-    private int price;
-    @Column(name="image_link")
-    private String imageLink;
+    
+    @Column(name = "quantity")
+    private int quantity;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
-    private CategoryModel category;
+    @JoinColumn(name = "order_id")
+    private OrderModel order;
 
-    @OneToOne
-    private OrderItemModel orderItem;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "drink_id", referencedColumnName = "id")
+    private DrinkModel drink;
 }
