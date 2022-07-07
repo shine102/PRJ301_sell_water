@@ -1,0 +1,23 @@
+.col-12.col-sm-4.col-lg-3{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 20px 50px 20px 55px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 0;
+}
+.row{
+    width: 100%;
+    padding: 10px 10px 50px 10px;
+}
+
+.blog-img{
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+    height: 170px;
+    flex-shrink: 0;
+    background-size: cover!important;
+}
+
+p{
+    text-align: center;
+}

@@ -18,7 +18,7 @@ import lombok.Data;
 @Table(name="drink_tab")
 public class DrinkModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name="drink_name")
     private String drinkName;
