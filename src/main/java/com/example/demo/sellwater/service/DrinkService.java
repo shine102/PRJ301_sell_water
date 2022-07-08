@@ -17,4 +17,8 @@ public class DrinkService {
     public List<DrinkModel> fetchDrinkList() {
         return drinkRepo.findAll();
     }
+
+    public List<DrinkModel> fetchDrinkListByCategoryId(Long id) {
+        return drinkRepo.findByCategoryId(id);
+    }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.sellwater.model.BlogModel;
 import com.example.demo.sellwater.model.CategoryModel;
+import com.example.demo.sellwater.model.DrinkModel;
 import com.example.demo.sellwater.service.BlogService;
 import com.example.demo.sellwater.service.CategoryService;
 import com.example.demo.sellwater.service.DrinkService;
@@ -27,15 +28,21 @@ public class MainController {
 
     @GetMapping("/")
     public String index(Model model){
-        try {
-            List<CategoryModel> categoryList = categoryService.fetchCategoryList();
-            List<BlogModel> blogList = blogService.fetchBlogList().subList(0, 12);
-
-            model.addAttribute("categoryList", categoryList);
-            model.addAttribute("blogList", blogList);
-        } catch (Exception e) {
-            System.out.println("bruh");
+        List<CategoryModel> categoryList = categoryService.fetchCategoryList();
+        List<BlogModel> blogList = blogService.fetchBlogList();
+        if (blogList.size() > 12) {
+            blogList = blogList.subList(0, 12);
         }
+
+        List<DrinkModel> drinkList = drinkService.fetchDrinkListByCategoryId(categoryList.get(0).getId());
+
+        if (drinkList.size() > 10) {
+            drinkList = drinkList.subList(0, 10);
+        }
+
+        model.addAttribute("drinkList", drinkList);
+        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("blogList", blogList);
         
         return "index";
     }
@@ -48,8 +55,11 @@ public class MainController {
     @GetMapping("/drink")
     public String drinks(Model model){
         List<CategoryModel> categoryList = categoryService.fetchCategoryList();
-        model.addAttribute("categoryList", categoryList);
+        
+        List<DrinkModel> drinkList = drinkService.fetchDrinkListByCategoryId(categoryList.get(0).getId());
 
+        model.addAttribute("drinkList", drinkList);
+        model.addAttribute("categoryList", categoryList);
 
         return "drinks";
     }
