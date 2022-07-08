@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Lose money time...</title>
+        <script src="./js/bootstrap.js"></script>
+	    <link rel="shortcut icon" href="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png" type="image/x-icon">
+	    <link rel="stylesheet" href="./css/bootstrap.css">
+    </head>
+    <body>
+        <div th:include="../static/component/navbar.html"></div>
+        <h1>Look up for the order</h1>
+        <form action="/vieworder" method="post">
+            <div class="form-group">
+                <label for="orderid">Order ID</label>
+                <input type="text" class="form-control" id="orderid" name="orderid" placeholder="Enter order ID">
+            </div>
+        <button type="submit" class="btn btn-outline-warning">Submit</button>
+        <div th:include="../static/component/footer.html"></div>
+    </body>
+</html>

@@ -8,6 +8,7 @@
 	<script src="./js/bootstrap.js"></script>
 	<link rel="shortcut icon" href="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png" type="image/x-icon">
 	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
@@ -51,9 +52,16 @@
 			</div>
 		</div>
 		<div th:include="../static/components/drink.html"></div>
+		<div class="row">
+			<div class="col text-center">
+				<button class="btn btn-outline-warning" onclick="window.location.href = '/drink'">
+					See More
+				</button>
+			</div>
+		  </div>
 		<div th:include="../static/components/blog.html"></div>
 		
-		<div class="row">
+		<div class="row see-more">
 			<div class="col text-center">
 				<button class="btn btn-outline-warning" onclick="window.location.href = '/blog'">
 					See More
