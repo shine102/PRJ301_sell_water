@@ -4,6 +4,7 @@
     border-radius: 8px;
     box-sizing: border-box;
     padding: 0;
+    cursor: pointer;
 }
 .row{
     width: 100%;
