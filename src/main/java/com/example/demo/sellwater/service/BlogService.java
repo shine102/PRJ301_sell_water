@@ -17,5 +17,9 @@ public class BlogService {
         return blogRepo.findAll();
     }
 
+    public BlogModel fetchBlogById(Long id) {
+        return blogRepo.findById(id).get();
+    }
+
 
 }

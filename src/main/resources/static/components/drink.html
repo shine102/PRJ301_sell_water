@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="./css/drink.css">
-        <script src="./js/drink.js"></script>
+        <link rel="stylesheet" href="/css/drink.css">
+        <script src="/js/drink.js"></script>
     </head>
     <body>
         <br>
@@ -11,8 +11,8 @@
             <h4 style="text-align: center;">☕ Product from sell water house</h4>
             <br>
             <div class="row row-cols-6">
-                <div class="col-2" th:each = "category : ${categoryList}">
-                    <img class="menu-img" th:src="${category.imageLink}" th:alt="${category.categoryName}">
+                <div class="col-2" th:each = "category : ${categoryList}" >
+                    <img class="menu-img" th:src="${category.imageLink}" th:alt="${category.categoryName}" th:onclick="changeCategory([[${category.id}]])">
                     <p class="menu-title" th:utext="${category.categoryName}"></p>
                 </div>
             </div>
