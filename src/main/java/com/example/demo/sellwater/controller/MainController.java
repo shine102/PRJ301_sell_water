@@ -85,7 +85,7 @@ public class MainController {
         model.addAttribute("drinkList", drinkList);
         model.addAttribute("categoryList", categoryList);
 
-        return "drinks";
+        return "drink_list";
     }
 
     @GetMapping("/blog")
@@ -93,7 +93,7 @@ public class MainController {
 
         List<BlogModel> blogList = blogService.fetchBlogList();
         model.addAttribute("blogList", blogList);
-        return "blogs";
+        return "blog_list";
     }
 
     @GetMapping("/blog/{blogId}")
