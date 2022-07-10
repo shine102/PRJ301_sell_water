@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="/css/drink.css">
-        <script src="/js/drink.js"></script>
-    </head>
-    <body>
-        <br>
-        <div class="container-fluid" >
-            <h4 style="text-align: center;">☕ Product from sell water house</h4>
-            <br>
-            <div class="row row-cols-6">
-                <div class="col-2" th:each = "category : ${categoryList}" >
-                    <img class="menu-img" th:src="${category.imageLink}" th:alt="${category.categoryName}" th:onclick="changeCategory([[${category.id}]])">
-                    <p class="menu-title" th:utext="${category.categoryName}"></p>
-                </div>
-            </div>
-            <div class="row mb-4 mb-lg-5">
-                <div class="col-12 col-md-6 col-lg-3 col-xl-2 mt-2 mt-lg-3" th:each="drink:${drinkList}">
-                    <img class="img-item" th:src="${drink.imageLink}" alt="" width=100%>
-                    <p><strong th:utext="${drink.drinkName}"></strong></p>
-                    <div class="row">
-                        <div class="col-9">
-                            <p class="price" th:utext="(${drink.price}) + ' đ'"></p>
-                        </div>
-                        <div class="col-3">
-                            <div class="btn btn--orange" onclick="addToCart(this)">+</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </body>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="/css/drink.css">
+	<script src="/js/drink.js"></script>
+</head>
+
+<body>
+	<br>
+	<div class="container-fluid">
+		<h4 style="text-align: center;">☕ Product from sell water house</h4>
+		<br>
+		<div class="row row-cols-6">
+			<div class="col-2" th:each="category : ${categoryList}">
+				<img class="menu-img" th:src="${category.imageLink}" th:alt="${category.categoryName}"
+					th:onclick="changeCategory([[${category.id}]])">
+				<p class="menu-title" th:utext="${category.categoryName}"></p>
+			</div>
+		</div>
+		<div class="row mb-4 mb-lg-5">
+			<div class="col-12 col-md-6 col-lg-3 col-xl-2 mt-2 mt-lg-3" th:each="drink:${drinkList}">
+				<img class="img-item" th:src="${drink.imageLink}" alt="" width=100%>
+				<p><strong th:utext="${drink.drinkName}"></strong></p>
+				<div class="row">
+					<div class="col-9">
+						<p class="price" th:utext="(${drink.price}) + ' đ'"></p>
+					</div>
+					<div class="col-3">
+						<div class="btn btn--orange" onclick="addToCart(this)">+</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
 </html>

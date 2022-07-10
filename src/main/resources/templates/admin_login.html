@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/admin_login.css">
     <title>Login, If you aren't admin, please go back</title>
 </head>
 <body>
+  <div class="container">
+    <form class="form-signin" method="post" action="/admin/login">
+      <h2 class="form-signin-heading">Please sign in to Admin Panel</h2>
+      <p>
+        <label for="username" class="sr-only">Username</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+      </p>
+      <p>
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+      </p>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <br>
+      <br>
+
+      <div class="alert alert-danger" role="alert" th:if="${error != null}" th:text="${error}" ></div>
+    </form>
     
+</div>
 </body>
 </html>
