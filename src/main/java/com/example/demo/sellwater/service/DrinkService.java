@@ -32,4 +32,10 @@ public class DrinkService {
 
         return drinkList;
     }
+
+    public void saveDrink(DrinkModel drink) {
+    }
+
+    public void modifyDrink(DrinkModel drink) {
+    }
 }
