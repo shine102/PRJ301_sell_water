@@ -51,8 +51,8 @@
         }
         .card-product-note-item i {
           display: flex;
-    align-items: center;
-    justify-content: center;
+          align-items: center;
+          justify-content: center;
         }
         .card-product-note-item input {
           height: 35px;
@@ -70,13 +70,22 @@
           color: #fa8c16;
           font-weight: bold;
         }
-        .text-danger {
-          height: 125px;
+        /* .{
           justify-content: flex-end;
           align-items: end;
-        }
+        } */
         .text-danger i{
           margin-bottom: 5px;
+        }
+        .card-content.star {
+          margin-top: 30px;
+        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+        }
+        .number-input input[type=number] {
+        justify-content: center;
         }
     </style>
   </head>
@@ -105,11 +114,14 @@
               <div class="price d-flex justify-content-between">
                 <span>29000đ</span>
                 <div class="icon_quantity">
-                    <button style="text-decoration: none; border: 0; background-color: white"><i style="color: #ccc" class="fa-solid fa-circle-minus"></i></button>
-                    <span>1</span>
-                    <button style="text-decoration: none; border: 0; background-color: white"><i style="color: #fa8c16;" class="fa-solid fa-circle-plus"></i></button>
-                    
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" style="text-decoration: none; border: 0; background-color: white"><i style="color: #ccc" class="fa-solid fa-circle-minus"></i></button>
+                    <input class="quantity" max="10" min="1" name="quantity" value="1" type="number">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" style="text-decoration: none; border: 0; background-color: white"><i style="color: #fa8c16;" class="fa-solid fa-circle-plus"></i></button>
                 </div>
+                
+                
+
+
             </div>
 
             <!-- Note for product -->
@@ -119,8 +131,9 @@
             </div>
   
               <!-- Rating star -->
-              <div>
-                <div class="d-flex mt-5 text-danger">
+              <div class="card_content-star" style="height: 175px; margin-top: 50px">
+                <span style="font-size: 17px; font-weight: 500;" class="content_product"> Cà phê được pha phin truyền thống kết hợp với sữa đặc tạo nên hương vị đậm đà, hài hòa giữa vị ngọt đầu lưỡi và vị đắng thanh thoát nơi hậu vị.</span>
+                <div class="d-flex mt-5 text-danger" style="justify-content: end;" >
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
