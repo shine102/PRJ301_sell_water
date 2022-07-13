@@ -21,14 +21,14 @@
 		</div>
 		<div class="row mb-4 mb-lg-5">
 			<div class="col-12 col-md-6 col-lg-3 col-xl-2 mt-2 mt-lg-3" th:each="drink:${drinkList}">
-				<img class="img-item" th:src="${drink.imageLink}" alt="" width=100%>
+				<img class="img-item" th:src="${drink.imageLink}" alt="" width=100% th:onclick="goToDrink([[${drink.id}]])">
 				<p><strong th:text="${drink.drinkName}"></strong></p>
 				<div class="row">
 					<div class="col-9">
 						<p class="price" th:text="(${drink.price}) + ' đ'"></p>
 					</div>
 					<div class="col-3">
-						<div class="btn btn--orange" th:onclick="addToCart()">+</div>
+						<div class="btn btn--orange" th:onclick="addToCart([[${drink.id}]], [[${drink.drinkName}]], [[${drink.price}]])">+</div>
 					</div>
 				</div>
 			</div>

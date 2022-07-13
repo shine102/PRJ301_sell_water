@@ -5,3 +5,11 @@
 .narbar-brand{
     margin-left: 8%;
 }
+
+.nav-link{
+    color:rgb(255, 255, 255);
+}
+
+.navbar.navbar-expand-xxl.sticky-top.bg-warning{
+    margin-bottom: 50px;
+}

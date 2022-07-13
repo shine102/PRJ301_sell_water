@@ -17,13 +17,16 @@ public class OrderController {
 
     @GetMapping("/order")
     public String viewOrderSearchPage() {
-        return "order";
+        return "find_order";
     }
 
     @PostMapping("/order")
     public String searchOrder(String orderId, Model model){
-        OrderModel orderModel = orderService.searchOrder(orderId);
-        model.addAttribute("order", orderModel);
+        OrderModel order = orderService.searchOrder(orderId);
+        if (order == null){
+            model.addAttribute("error", "No order available!");
+        }
+        model.addAttribute("order", order);
         return "order";
     }
 

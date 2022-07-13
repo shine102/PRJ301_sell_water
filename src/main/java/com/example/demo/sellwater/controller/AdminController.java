@@ -71,9 +71,11 @@ public class AdminController {
             List<CategoryModel> categoryList = categoryService.fetchCategoryList();
             List<DrinkModel> drinkList = drinkService.fetchDrinkListByCategoryId(categoryId);
             List<BlogModel> blogList = blogService.fetchBlogList();
+            List<OrderModel> orderList = orderService.fetchOrderList();
             model.addAttribute("blogList", blogList);
             model.addAttribute("drinkList", drinkList);
             model.addAttribute("categoryList", categoryList);
+            model.addAttribute("orderList", orderList);
             return "admin_panel";
         }
         
@@ -165,6 +167,7 @@ public class AdminController {
         return "redirect:/";
     }
 
-
+    // order controller
+    // 
 
 }

@@ -13,106 +13,11 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
   <!-- MDB -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    .header_checkout {
-      position: relative;
-      margin: 70px 0;
-    }
-
-    .checkout_method {
-      padding: 7px;
-      width: 135px;
-      border: 2px solid #fa8c16;
-      border-radius: 50px;
-      cursor: pointer;
-    }
-
-    .icon i {
-      cursor: pointer;
-      color: #fa8c16;
-      font-size: 30px;
-    }
-
-    .header_checkout h1 {
-      font-size: 32px;
-    }
-
-    .checkout_location {
-      padding-left: 15px;
-    }
-
-    .checkout_location span {
-      padding-left: 5px;
-    }
-
-    .row>* {
-      padding-left: 0;
-    }
-
-    .right-content {
-      padding-left: 30px;
-    }
-
-    .checkout_shipping_head {
-      border-bottom: 2px solid #fa8c16;
-    }
-
-    .tch-checkout-box__btn-outline {
-      border: 2px solid #fa8c16;
-      border-radius: 25px;
-      padding: 7px;
-    }
-
-    .fa-pen {
-      margin-right: 15px;
-      margin-bottom: 20px;
-      color: #fa8c16;
-    }
-
-    .tch-order-card__text_free {
-      color: #fa8c16;
-      padding-bottom: 25px;
-    }
-
-    .tch-checkout-box--list-submited {
-      background-color: #fa8c16;
-      padding: 15px;
-    }
-
-    .button_submit {
-      background-color: whitesmoke;
-      color: #fa8c16;
-      border-radius: 25px;
-    }
-
-    .icon_need {
-      margin-left: 364px;
-    }
-
-    .tch-checkout-box__titletotal {
-      border-bottom: 2px solid #fa8c16;
-      padding-bottom: 5px;
-      width: fit-content;
-    }
-
-    .tch-checkout-box--remove-card {
-      margin-top: 25px;
-      font-size: 15px;
-      color: #fa8c16;
-    }
-
-    .fa-trash {
-      padding-right: 3px;
-    }
-  </style>
+  
+  <link rel="stylesheet" href="/css/checkout.css">
 </head>
 
-<body>
+<body onload="fetchList()">
   <div th:include="../static/components/navbar.html"></div>
   <div>
     <div class="container-fluid container-lg custom-checkout">
@@ -132,45 +37,7 @@
             <h4 class="checkout_title checkout_shipping_head">
               Shipping
             </h4>
-            <p data-toggle="modal" data-target="#search-modal" class="checkout_method">
-              Change method
-            </p>
-          </div>
-
-          <div class="d-flex flex-row align-items-start checkout_imglocation">
-            <div class="img_shipping">
-              <img width="40px"
-                src="https://res.cloudinary.com/dimxnh34h/image/upload/v1657099315/icon/Delivery2_jwscm1.png" alt="" />
-            </div>
-            <div class="d-flex justify-content-between align-items-start checkout_location">
-              <div>
-                <h5 class="checkout_location_title mb-0">Hà Đông</h5>
-                <p class="checkout_location_content mb-0">Hà Đông, Hanoi</p>
-              </div>
-              <span class="icon icon_need mt-2">
-                <i aria-hidden="true" class="fa fa-chevron-right"></i>
-              </span>
-            </div>
-          </div>
-
-          <hr />
-
-          <div class="d-flex flex-row align-items-start tch-delivery-card">
-            <div style="width: 40px; height: 40px; margin-right: 15px" class="tch-delivery-card__image"></div>
-
-            <div data-toggle="modal" data-target="#delivery-time"
-              class="d-flex justify-content-between align-items-start tch-delivery-card__content">
-              <div>
-                <h5 class="tch-delivery-card__title mb-0">
-                  Receive goods within 15-30 minutes
-                </h5>
-                <p class="tch-delivery-card__description mb-0">
-                  When: As soon as possible
-                </p>
-              </div>
-              <span class="icon mt-2" style="margin-left: 156px"><i aria-hidden="true"
-                  class="fa fa-chevron-right"></i></span>
-            </div>
+            
           </div>
 
           <div class="form-outline m-4">
@@ -188,21 +55,22 @@
           <div class="form-outline m-4">
             <input style="background-color: white" type="text" id="enter_address" class="form-control" name="address"
               required />
-            <label class="form-label">More shipping instructions</label>
+            <label class="form-label">Address</label>
           </div>
 
           <div class="form-check form-check-inline">
             <input class="form-check-input" style="background-color: #fa8c16" type="checkbox" id="inlineCheckbox3"
-              value="option3" />
+              value="option3" checked="checked" />
             <label class="form-check-label" for="inlineCheckbox3">
               <span>
                 Agree to
-                <a href="/terms" style="color: #fa8c16" class="policy-link">the terms and conditions</a>
+                <a style="color: #fa8c16" class="policy-link">the terms and conditions</a>
                 of purchase of <strong>The Sell Water House</strong>
               </span>
             </label>
           </div>
         </div>
+
         <!-- Content in the right -->
         <div class="right-content col-md-6">
           <div class="card">
@@ -212,48 +80,14 @@
                   <h4 class="tch-checkout-box__title mb-0">
                     Selected dishes
                   </h4>
-                  <a style="text-decoration: none; color: black">
+                  <a href="/drink" style="text-decoration: none; color: black">
                     <p class="tch-checkout-box__btn-outline">
                       More dishes
                     </p>
                   </a>
                 </div>
-
-                <div class="tch-order-card tch-order-card--border d-flex align-items-center justify-content-between">
-                  <div class="tch-order-card__left d-flex">
-                    <span class="tch-order-card__icon d-flex align-items-center"><i class="fa fa-pen"></i></span>
-                    <div class="tch-order-card__content">
-                      <h5 class="tch-order-card__title mb-0">
-                        1 x Milk Ice Coffee
-                      </h5>
-                      <p class="tch-order-card__description mb-0">
-                        Medium, 1 x Medium
-                      </p>
-                      <!---->
-                      <p class="tch-order-delete-item">Delete</p>
-                    </div>
-                  </div>
-                  <div class="tch-order-card__right">
-                    <p class="tch-order-card__price mb-0">29.000đ</p>
-                  </div>
-                </div>
-                <div class="tch-order-card tch-order-card--border d-flex align-items-center justify-content-between">
-                  <div class="tch-order-card__left d-flex">
-                    <span class="tch-order-card__icon d-flex align-items-center"><i class="fa fa-pen"></i></span>
-                    <div class="tch-order-card__content">
-                      <h5 class="tch-order-card__title mb-0">
-                        1 x CloudFee Creme Brulee Caramel
-                      </h5>
-                      <p class="tch-order-card__description mb-0">
-                        Medium, 1 x Medium
-                      </p>
-                      <!---->
-                      <p class="tch-order-delete-item">Delete</p>
-                    </div>
-                  </div>
-                  <div class="tch-order-card__right">
-                    <p class="tch-order-card__price mb-0">49.000đ</p>
-                  </div>
+                <div id="order-items-container">
+                    
                 </div>
               </div>
               <div class="tch-checkout-box tch-checkout-box--list-total tch-checkout-border">
@@ -271,40 +105,17 @@
                     </div>
                   </div>
                   <hr />
-                  <div class="tch-order-card tch-order-card--border d-flex align-items-center justify-content-between">
-                    <div class="tch-order-card__left d-flex">
-                      <p class="tch-order-card__text mb-0">Transport Fee</p>
-                    </div>
-                    <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">10.000đ</p>
-                    </div>
-                  </div>
-                  <hr />
-                  <div data-toggle="modal" data-target="#sale-modal"
-                    class="tch-order-card d-flex align-items-center justify-content-between cursor-pointer">
-                    <div class="tch-order-card__left tch-order-card__left-custom">
-                      <p class="tch-order-card__text_free mb-0">Promotion</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
             <div class="tch-checkout-box tch-checkout-box--list-submited d-flex justify-content-between">
-              <div>
-                <p class="tch-order-card__textsubmit text-white mb-0">
-                  Amount
-                </p>
-                <p class="tch-order-card__textsubmit text-white f-600 mb-0">
-                  59.000đ
-                </p>
-              </div>
-              <button type="button" class="btn btn--white text-orange btn--radius-100 button_submit">
+              <button type="button" class="btn btn--white text-orange btn--radius-100 button_submit" onclick="sendOrder()">
                 Order
               </button>
             </div>
           </div>
           <div class="tch-checkout-box tch-checkout-box--remove-card float-lg-right">
-            <p class="tch-checkout-box__text text-center mb-0">
+            <p class="tch-checkout-box__text text-center mb-0" onclick="removeOrder()">
               <span class="icon mr-2"><i aria-hidden="true" class="fa fa-trash"></i></span><span>
                 <font style="vertical-align: inherit">
                   <font style="vertical-align: inherit">Delete order</font>
@@ -320,5 +131,5 @@
 </body>
 <!-- MDB -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
-
+<script src="/js/checkout.js"></script>
 </html>

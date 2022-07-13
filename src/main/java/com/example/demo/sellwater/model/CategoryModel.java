@@ -14,16 +14,18 @@ import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
-@Entity
+@Entity 
 @Data
 @Table(name = "category_tab")
 public class CategoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @NotBlank(message = "Please add category name")
     @Column(name="category_name")
     private String categoryName;
+
     @NotBlank(message = "Please add image link")
     @Column(name="image_link")
     private String imageLink;
