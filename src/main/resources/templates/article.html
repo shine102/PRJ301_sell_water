@@ -12,13 +12,13 @@
 </head>
 <body>
     <div th:include="../static/components/navbar.html"></div>
-    <div class="container-fluid">
+    <div class="container-fluid article">
         <h1 class="title" th:text="${article.blogTitle}"></h1>
         <div class="d-flex justify-content-center">
             <img class="content" th:src="${article.imageLink}" th:alt="${article.blogTitle}" width="70%">
         </div>
         <p class="content" th:text="${article.content}"></p>
-        <div th:include="../static/components/footer.html"></div>
     </div>
+    <div th:include="../static/components/footer.html"></div>
 </body>
 </html>

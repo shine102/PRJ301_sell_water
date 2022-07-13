@@ -71,21 +71,28 @@ public class MainController {
         return "about";
     }
 
-    @GetMapping("/drink")
+    @GetMapping("/category")
     public String redirectDrink(){
-        return "redirect:/drink/1";
+        return "redirect:/category/1";
     }
 
-    @GetMapping("/drink/{drinkId}")
-    public String drinks(Model model, @PathVariable("drinkId") Long drinkId){
+    @GetMapping("/category/{categoryId}")
+    public String drinkList(Model model, @PathVariable("categoryId") Long categoryId){
         List<CategoryModel> categoryList = categoryService.fetchCategoryList();
         
-        List<DrinkModel> drinkList = drinkService.fetchDrinkListByCategoryId(drinkId);
+        List<DrinkModel> drinkList = drinkService.fetchDrinkListByCategoryId(categoryId);
 
         model.addAttribute("drinkList", drinkList);
         model.addAttribute("categoryList", categoryList);
 
         return "drink_list";
+    }
+
+    @GetMapping("/drink/{drinkId}")
+    public String drink(Model model, @PathVariable("drinkId") Long drinkId){
+        DrinkModel drink = drinkService.fetchDrinkById(drinkId);
+        model.addAttribute("drink", drink);
+        return "view_product";
     }
 
     @GetMapping("/blog")

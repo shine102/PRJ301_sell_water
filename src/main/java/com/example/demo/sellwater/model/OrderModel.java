@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -28,13 +27,13 @@ public class OrderModel {
 
     @Column(name = "phone")
     private String phone;
-
+ 
     @Column(name = "address")
     private String address;
 
+    @Column(name = "comment")
+    private int comment;
+
     @OneToMany(mappedBy = "id")
     private List<OrderItemModel> orderItem = new ArrayList<>();
-
-    @OneToOne(mappedBy = "")
-    private FeedbackModel feedback;
 }

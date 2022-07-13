@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  .header_checkout {
+    position: relative;
+    margin: 70px 0;
+  }
+
+  .checkout_method {
+    padding: 7px;
+    width: 135px;
+    border: 2px solid #fa8c16;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .icon i {
+    cursor: pointer;
+    color: #fa8c16;
+    font-size: 30px;
+  }
+
+  .header_checkout h1 {
+    font-size: 32px;
+  }
+
+  .checkout_location {
+    padding-left: 15px;
+  }
+
+  .checkout_location span {
+    padding-left: 5px;
+  }
+
+  .row>* {
+    padding-left: 0;
+  }
+
+  .right-content {
+    padding-left: 30px;
+  }
+
+  .checkout_shipping_head {
+    border-bottom: 2px solid #fa8c16;
+  }
+
+  .tch-checkout-box__btn-outline {
+    border: 2px solid #fa8c16;
+    border-radius: 25px;
+    padding: 7px;
+  }
+
+  .fa-beer-mug-empty {
+    margin-right: 15px;
+    margin-bottom: 20px;
+    color: #fa8c16;
+  }
+
+  .tch-order-card__text_free {
+    color: #fa8c16;
+    padding-bottom: 25px;
+  }
+
+  .tch-checkout-box--list-submited {
+    background-color: #fa8c16;
+    padding: 15px;
+  }
+
+  .button_submit {
+    background-color: whitesmoke;
+    color: #fa8c16;
+    border-radius: 25px;
+  }
+
+  .icon_need {
+    margin-left: 364px;
+  }
+
+  .tch-checkout-box__titletotal {
+    border-bottom: 2px solid #fa8c16;
+    padding-bottom: 5px;
+    width: fit-content;
+  }
+
+  .tch-checkout-box--remove-card {
+    margin-top: 25px;
+    font-size: 15px;
+    color: #fa8c16;
+  }
+
+  .fa-trash {
+    padding-right: 3px;
+  }
