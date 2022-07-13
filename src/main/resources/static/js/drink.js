@@ -1,6 +1,5 @@
 function addToCart(id, name, price){
     var string = localStorage.getItem('drinkList');
-    console.log(string);
     var drinkList;
     if (string !== null){
         drinkList = JSON.parse(string);
@@ -17,7 +16,6 @@ function addToCart(id, name, price){
         drinkList = [];
         drinkList.push({'id': id, 'name' : name, 'quantity' : 1,  'price': price});
     }
-    console.log(drinkList);
     localStorage.setItem('drinkList', JSON.stringify(drinkList));
 }
 

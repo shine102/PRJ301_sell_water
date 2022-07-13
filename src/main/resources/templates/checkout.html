@@ -15,6 +15,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
   
   <link rel="stylesheet" href="/css/checkout.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body onload="fetchList()">
@@ -80,7 +82,7 @@
                   <h4 class="tch-checkout-box__title mb-0">
                     Selected dishes
                   </h4>
-                  <a href="/drink" style="text-decoration: none; color: black">
+                  <a href="/category" style="text-decoration: none; color: black">
                     <p class="tch-checkout-box__btn-outline">
                       More dishes
                     </p>
@@ -101,7 +103,7 @@
                       <p class="tch-order-card__texttotal mb-0">Amount</p>
                     </div>
                     <div class="tch-order-card__right">
-                      <p class="tch-order-card__price mb-0">49.000đ</p>
+                      <p id="amount-money" class="tch-order-card__price mb-0">0đ</p>
                     </div>
                   </div>
                   <hr />
