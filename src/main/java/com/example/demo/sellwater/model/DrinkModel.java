@@ -33,7 +33,6 @@ public class DrinkModel {
     @Column(columnDefinition = "float(1) default 0")
     private double rating = 0;
     
-    
     @Column(columnDefinition = "integer default 0")
     private int numberRating = 0;
 
