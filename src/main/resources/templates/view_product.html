@@ -1,154 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css"
-      rel="stylesheet"
-    />
-    <style>
-        .icon_quantity button {
-            margin: 5px;
-            
-        }
-        .icon_quantity{
-          font-size: 25px;
-        }
-        .price span {
-          padding-top: 10px;
-        }
-        .fa-file-lines{
-          background-color: #ccc;
-          width: 35px;
-          height:35px;
-          border: 1px solid #ccc;
-          
 
-        }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title th:text="${drink.drinkName}"></title>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css" rel="stylesheet" />
+  <!-- favicon -->
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png" type="image/x-icon">
+  <!-- Custom CSS -->
+  <script src="/js/view_product.js"></script>
+  <style>
+    .icon_quantity button {
+    margin: 5px;
+}
+.icon_quantity{
+  font-size: 25px;
+}
+.price span {
+  padding-top: 10px;
+}
+.fa-file-lines{
+  background-color: #ccc;
+  width: 35px;
+  height:35px;
+  border: 1px solid #ccc;
+}
 
-        .note-product input{
-          width: 300px;
-          height:30px;
-          
-        }
-        .card-product-note-item {
-          display:flex;
+.note-product input{
+  width: 300px;
+  height:30px;
+  
+}
+.card-product-note-item {
+  display:flex;
 
-        }
-        .card-product-note-item i {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .card-product-note-item input {
-          height: 35px;
-          width: 350px;
-          opacity: .7;
-          font-size: 14px;
-          border: 1px solid #ccc;
-          padding-left: 5px;
-          text-decoration: none;
-        }
-        .small {
-          margin-left:10px
-        }
-        .price span {
-          color: #fa8c16;
-          font-weight: bold;
-        }
-       .container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .text-danger i{
-          margin-bottom: 5px;
-        }
-        .card-content.star {
-          margin-top: 30px;
-        }
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none;
-        }
-        .number-input input[type=number] {
-        justify-content: center;
-        }
-    </style>
-  </head>
-  <body>
-    <div class="container">
+}
+.card-product-note-item i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-product-note-item input {
+  height: 35px;
+  width: 350px;
+  opacity: .7;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  padding-left: 5px;
+  text-decoration: none;
+}
+.small {
+  margin-left:10px
+}
+.price span {
+  color: #fa8c16;
+  font-weight: bold;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.text-danger i{
+  margin-bottom: 5px;
+}
+.card-content.star {
+  margin-top: 30px;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+-webkit-appearance: none;
+}
+.number-input input[type=number] {
+justify-content: center;
+}
+  </style>
+</head>
 
-        <!-- Left img -->
-      <div class="card mb-3" style="max-width: 800px">
-        <div class="row g-0">
-          <div class="col-md-6">
-            <img
-              src="https://res.cloudinary.com/dimxnh34h/image/upload/v1657009123/category/coffee/classic-cold-brew_791256_400x400_b08cfc2d37a541c3893f654686b5474d_large_zuxcor.webp"
-              alt="Trendy Pants and Shoes"
-              class="img-fluid rounded-start"
-            />
-          </div>
+<body>
+  <div th:include="../static/components/navbar.html"></div>
+  <div class="container">
 
-          <!-- Right content -->
-          <div class="col-md-6">
-            <div class="card-body">
-              <div class="title_product d-flex justify-content-between">
-              <h5 class="card-title">Bac Xiu</h5>
-              <span style="visibility:hidden"> id:#123 </span> 
+    <!-- Left img -->
+    <div class="card mb-3" style="max-width: 800px; height: 85vh;">
+      <div class="row g-0">
+        <div class="col-md-6">
+          <img
+            src="https://res.cloudinary.com/dimxnh34h/image/upload/v1657009123/category/coffee/classic-cold-brew_791256_400x400_b08cfc2d37a541c3893f654686b5474d_large_zuxcor.webp"
+            alt="Trendy Pants and Shoes" class="img-fluid rounded-start" />
+        </div>
+
+        <!-- Right content -->
+        <div class="col-md-6">
+          <div class="card-body">
+            <div class="title_product d-flex justify-content-between">
+              <h5 id="drink_title" th:text="${drink.drinkName}" class="card-title"></h5>
+              <span id="drink_id" th:text="${drink.id}" style="visibility:hidden"></span>
             </div>
-              
-              <div class="price d-flex justify-content-between">
-                <span>29000đ</span>
-                <div class="icon_quantity">
-                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" style="text-decoration: none; border: 0; background-color: white"><i style="color: #ccc" class="fa-solid fa-circle-minus"></i></button>
-                    <input class="quantity" max="10" min="1" name="quantity" value="1" type="number">
-                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" style="text-decoration: none; border: 0; background-color: white"><i style="color: #fa8c16;" class="fa-solid fa-circle-plus"></i></button>
-                </div>
+
+            <div class="price d-flex justify-content-between">
+              <span id="drink_price" th:text="${drink.price} + ' đ'"></span>
+              <div class="icon_quantity">
+                <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                  style="text-decoration: none; border: 0; background-color: white"><i style="color: #fa8c16"
+                    class="fa-solid fa-circle-minus"></i></button>
+                <input id="drink_quantity" class="quantity" max="20" min="1" name="quantity" value="1" type="number">
+                <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                  style="text-decoration: none; border: 0; background-color: white"><i style="color: #fa8c16;"
+                    class="fa-solid fa-circle-plus"></i></button>
+              </div>
             </div>
 
             <!-- Note for product -->
             <div class="card-product-note-item mt-2">
-              <i class="fa-solid fa-file-lines"></i>
-              <input type="text" placeholder="Extra notes for this dish" class="card-product-text">
+              <input type="button" placeholder="Extra notes for this dish" class="card-product-text" value="Add this drink to cart" th:onclick="addToCart([[${drink.id}]], [[${drink.drinkName}]], [[${drink.price}]])">
             </div>
-  
-              <!-- Rating star -->
-              <div class="card_content-star" style="height: 175px; margin-top: 50px">
-                <span style="font-size: 17px; font-weight: 500;" class="content_product"> Cà phê được pha phin truyền thống kết hợp với sữa đặc tạo nên hương vị đậm đà, hài hòa giữa vị ngọt đầu lưỡi và vị đắng thanh thoát nơi hậu vị.</span>
-                <div class="d-flex mt-5 text-danger" style="justify-content: end;" >
+
+            <!-- Rating star -->
+            <div class="card_content-star" style="height: 175px; margin-top: 50px">
+              <span style="font-size: 17px; font-weight: 500;" class="content_product" th:text="${drink.description}"></span>
+              <div class="d-flex mt-5 text-danger" style="justify-content: end;" th:switch="${#numbers.formatInteger(drink.rating,1,'POINT')}">
+                <div th:case="'0'">
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <p class="mb-0 small text-muted" th:text=" ${drink.rating} + '/5 - (' + ${drink.numberRating} + ' voted)'"></p>
+                </div>
+                <div th:case="'1'">
+                  <i class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <p class="mb-0 small text-muted" th:text=" ${drink.rating} + '/5 - (' + ${drink.numberRating} + ' voted)'"></p>
+                </div>
+                <div th:case="'3'">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <p class="mb-0 small text-muted" th:text=" ${drink.rating} + '/5 - (' + ${drink.numberRating} + ' voted)'"></p>
+                </div>
+                <div th:case="'3'">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
+                  <p class="mb-0 small text-muted" th:text=" ${drink.rating} + '/5 - (' + ${drink.numberRating} + ' voted)'"></p>
+                </div>
+                <div th:case="'4'">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i style="color: rgba(178, 175, 175, 0.816)" class="fas fa-star"></i>
-                  <p class="mb-0 small text-muted">4.0/5 - (123 voted)</p>
+                  <p class="mb-0 small text-muted" th:text=" ${drink.rating} + '/5 - (' + ${drink.numberRating} + ' voted)'"></p>
                 </div>
-                
+                <div th:case="'5'">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <p class="mb-0 small text-muted" th:text=" ${drink.rating} + '/5 - (' + ${drink.numberRating} + ' voted)'"></p>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+
     <!-- MDB -->
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.js"
-    ></script>
-  </body>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.js"></script>
+    <div th:include="../static/components/footer.html"></div>
+</body>
+
 </html>
