@@ -1,6 +1,7 @@
 package com.example.demo.sellwater.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,6 +37,9 @@ public class OrderModel {
 
     @Column
     private String status = "on-way";
+
+    @Column
+    private Date createdAt = new Date();
 
     @OneToMany(mappedBy = "id")
     private List<OrderItemModel> orderItem = new ArrayList<>();

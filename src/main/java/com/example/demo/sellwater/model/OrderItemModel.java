@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -39,7 +38,7 @@ public class OrderItemModel {
     @JoinColumn(name = "order_id")
     private OrderModel order;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL) 
     @JoinColumn(name = "drink_id", referencedColumnName = "id")
     private DrinkModel drink;
 }
