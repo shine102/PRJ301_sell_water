@@ -105,8 +105,12 @@
 							aria-controls="change-password" aria-selected="false">Change Password</a>
 					</li>
 					<li class="nav-item" role="presentation">
-						<a class="nav-link" data-mdb-toggle="pill" href="#edit-blog" role="tab" aria-controls="change-password"
-							aria-selected="false">Edit Blogs</a>
+						<a class="nav-link" data-mdb-toggle="pill" href="#add-blog" role="tab" aria-controls="change-password"
+							aria-selected="false">Add Blog</a>
+					</li>
+					<li class="nav-item" role="presentation">
+						<a class="nav-link" data-mdb-toggle="pill" href="#view-blog" role="tab" aria-controls="view-blog"
+							aria-selected="false">View Blogs</a>
 					</li>
 				</ul>
 				<!-- Pills navs -->
@@ -115,7 +119,7 @@
 			<div class="web-body__content col-md-9 col-sm-8">
 				<!-- Pills content -->
 				<div class="tab-content pt-5" id="ex1-content">
-					<div class="tab-pane fade show active" id="view-drink" role="tabpanel" aria-labelledby="ex1-tab-1">
+					<div class="tab-pane fade show active" id="view-drink" role="tabpanel" aria-labelledby="ex2-tab-2">
 						<div class="container d-flex flex-column h-100">
 							<h1 class="text-center">The Sell Water House's Menu</h1>
 
@@ -212,7 +216,116 @@
 					</div>
 
 					<div class="tab-pane fade" id="view-order" role="tabpanel">
-						4
+						<table class="table align-middle mb-0 bg-white">
+							<thead class="bg-light">
+							  <tr>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Category</th>
+								<th>Total amount</th>
+								<th>Status</th>
+								<th>Time Order</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr>
+								<td>
+								  <div class="d-flex align-items-center">
+									<img
+									  src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-users-icon-png-image_4144740.jpg"
+									  alt=""
+									  style="width: 45px; height: 45px"
+									  class="rounded-circle"
+									/>
+									<div class="ms-3">
+									  <p class="fw-bold mb-1">Manh Hung</p>
+									  <p class="text-muted mb-0">#123</p>
+									</div>
+								  </div>
+								</td>
+								<td>
+								  <p class="fw-normal mb-1">Bac Xiu</p>
+								</td>
+								<td>
+								  <span class="badge badge-info rounded-pill d-inline"
+									>Coffee</span
+								  >
+								</td>
+								<td>300.000đ</td>
+								<td>
+								  <span class="badge badge-success rounded-pill d-inline"
+									>Delivered</span
+								  >
+								</td>
+								<td>17:20:54</td>
+					  
+							  </tr>
+							  <tr>
+								<td>
+								  <div class="d-flex align-items-center">
+									<img
+									  src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-users-icon-png-image_4144740.jpg"
+									  class="rounded-circle"
+									  alt=""
+									  style="width: 45px; height: 45px"
+									/>
+									<div class="ms-3">
+									  <p class="fw-bold mb-1">Tung Lam</p>
+									  <p class="text-muted mb-0">#345</p>
+									</div>
+								  </div>
+								</td>
+								<td>
+								  <p class="fw-normal mb-1">Ice Chocolate</p>
+								</td>
+								<td>
+								  <span class="badge badge-info rounded-pill d-inline"
+									>Chocolate-Matcha</span
+								  >
+								</td>
+								<td>49.000đ</td>
+								<td>
+								  <span class="badge badge-success rounded-pill d-inline"
+									>Delivered</span
+								  >
+								</td>
+								<td>17:15:00</td>
+					  
+							  </tr>
+							  <tr>
+								<td>
+								  <div class="d-flex align-items-center">
+									<img
+									  src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-users-icon-png-image_4144740.jpg"
+									  class="rounded-circle"
+									  alt=""
+									  style="width: 45px; height: 45px"
+									/>
+									<div class="ms-3">
+									  <p class="fw-bold mb-1">Dinh Tien</p>
+									  <p class="text-muted mb-0">#234</p>
+									</div>
+								  </div>
+								</td>
+								<td>
+								  <p class="fw-normal mb-1">Hi-Tea Peach</p>
+								</td>
+								<td>
+								  <span class="badge badge-info rounded-pill d-inline"
+									>Hi-Tea</span
+								  >
+								</td>
+								<td>25.000đ</td>
+								<td>
+								  <span class="badge badge-danger rounded-pill d-inline"
+									>Cancel</span
+								  >
+								</td>
+								<td>17:07:00</td>
+							  </tr>
+							  
+							</tbody>
+						  </table>
 					</div>
 
 					<div class="tab-pane fade" id="change-password" role="tabpanel">
@@ -242,9 +355,10 @@
 									onclick="document.querySelector(`a.nav-link[href='#view-drink']`).click()">Cancel</button>
 							</div>
 					</div>
-					<div class="tab-pane fade" id="edit-blog" role="tabpanel">
+					<!-- ADD BLOGS TAB -->
+					<div class="tab-pane fade" id="add-blog" role="tabpanel">
 						<form action="" method="post">
-							<h1 class="text-center">Edit Blog</h1>
+							<h1 class="text-center">Add Blog</h1>
 
 							<div class="form-outline m-4">
 								<input type="text" class="form-control" name="blog-title" required />
@@ -269,6 +383,76 @@
 									onclick="document.querySelector(`a.nav-link[href='#view-drink']`).click()">Cancel</button>
 							</div>
 					</div>
+
+					<!--  -->
+					<div class="tab-pane fade show" id="view-blog" role="tabpanel" aria-labelledby="ex3-tab-3">
+						<div class="container d-flex flex-column h-100">
+							<h1 class="text-center">The Sell Water House's Blogs</h1>
+
+							<div class="row row-cols-6">
+								<div class="col-2" th:each="category : ${categoryList}">
+									<img class="menu-img" th:src="${category.imageLink}" th:alt="${category.categoryName}"
+										th:onclick="changeCategory([[${category.id}]])">
+									<p class="menu-title" th:text="${category.categoryName}"></p>
+								</div>
+							</div>
+
+							<div class="web-drinks-list row flex-fill" style="height: calc(100vh - 200px); overflow-y: auto;">
+
+								<div class="col-lg-3 col-md-4 col-sm-6 mb-1" th:each="drink:${drinkList}">
+									<div class="card border">
+										<img th:src="${drink.imageLink}" class="card-img-top" alt="" />
+
+										<div class="card-body">
+											<h5 th:text="${drink.drinkName}" class="card-title"></h5>
+											<a href="#!" class="btn btn-primary web-drinks-list__blogs" th:data-drink-name="${drink.drinkName}"
+												th:data-drink-id="${drink.id}" th:data-drink-price="${drink.price}" th:data-drink-note="${drink.drinkName}">More</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- Edit-blogs -->
+						<div class="tab-pane fade" id="edit-blog" role="tabpanel">
+							<form action="" method="post" autocomplete="off">
+								<h1 class="text-center">Edit Blogs</h1>
+	
+								<div class="form-outline m-4">
+									<input type="text" id="edit-blog__blog-id" class="form-control" name="blogID" readonly required />
+									<label class="form-label">Blog ID</label>
+								</div>
+	
+								<div class="form-outline m-4">
+									<input type="text" id="edit-blog__blog-title" class="form-control" name="title" required />
+									<label class="form-label">Blog Title</label>
+								</div>
+	
+								<div class="form-outline m-4">
+									<textarea class="form-control" id="edit-blog__blog-content" rows="6" name="content"></textarea>
+									<label class="form-label">Content</label>
+								</div>
+	
+								<div class="form-outline m-4">
+									<input type="text" id="edit-blog__blog-image" class="form-control" name="imageLink" />
+									<label class="form-label">Image link</label>
+								</div>
+	
+								<div class="d-flex justify-content-between m-4">
+									<div>
+										<button type="submit" class="btn btn-primary btn-rounded m-1">Submit</button>
+										<input type="submit" class="btn btn-danger btn-rounded m-1" name="delete" value="delete"></input>
+									</div>
+	
+									<button type="button" class="btn btn-dark btn-rounded m-1"
+										onclick="document.querySelector(`a.nav-link[href='#view-blog']`).click()">Cancel</button>
+	
+								</div>
+							</form>
+						</div>
+
+					</div>
 				</div>
 				<!-- Pills content -->
 			</div>
@@ -291,6 +475,22 @@
 				document.getElementById('edit-drink__drink-note').value = item.dataset.drinkNote;
 
 				editDrinkTab.click();
+			});
+		});
+	});
+	// BLog
+	window.addEventListener('load', () => {
+		const editBlogTab = document.querySelector("a.nav-link[href='#edit-blog']");
+		const items = document.querySelectorAll(".web-drinks-list__blogs");
+
+		items.forEach(item => {
+			item.addEventListener('click', () => {
+				document.getElementById('edit-blog__blog-id').value = item.dataset.blogId;
+				document.getElementById('edit-blog__blog-title').value = item.dataset.blogTitle;
+				document.getElementById('edit-blog__blog-content').value = item.dataset.blogContent;
+				document.getElementById('edit-blog__blog-image').value = item.dataset.blogImg;
+
+				editBlogTab.click();
 			});
 		});
 	});
