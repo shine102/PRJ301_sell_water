@@ -60,13 +60,50 @@
                 </h4>
               </div>
 
-              <hr />
 
-              <div class="form-outline m-4">
-                <input class="form-control" id="formControlReadonly" type="text" value="Nguyễn Ngọc Tùng Lâm"
-                  aria-label="readonly input example" readonly />
-                <label class="form-label" for="formControlReadonly">Recipient's name</label>
-              </div>
+      <!-- Đơn hàng nhập đúng ID - chế độ d-none -->
+      <div id="correct_orderid" class="mt-5">
+        <div>
+          <div class="container-fluid container-lg custom-checkout">
+            <div class="row justify-content-center">
+              <!-- Content in the left -->
+              <div class="left-content col-md-6">
+                <div class="d-flex checkout_title justify-content-between">
+                  <h4 class="checkout_title checkout_shipping_head">
+                    Order Detail
+                  </h4>
+                  <!-- The status of Order -->
+                  <span class="d-inline-block" style="visibility: hidden;" data-mdb-toggle="popover" data-mdb-content="The order is in process of processing.">
+                    <button style="font-weight: bold; background-color: #ccc" class="btn btn-light" style="pointer-events: none;" type="button" disabled>Loading</button>
+                  </span>
+                  <span class="d-inline-block" style="visibility: hidden;" data-mdb-toggle="popover" data-mdb-content="The order has been canceled.">
+                    <button style="font-weight: bold;" class="btn btn-danger" style="pointer-events: none;" type="button" disabled>Cancel</button>
+                  </span>
+                  <span class="d-inline-block" style="visibility: hidden;" data-mdb-toggle="popover" data-mdb-content="The order is on the way">
+                    <button style="font-weight: bold;" class="btn btn-info" style="pointer-events: none;" type="button" disabled>On-way</button>
+                  </span>
+                  <span class="d-inline-block" style="visibility: none;" data-mdb-toggle="popover" data-mdb-content="The order is delivered">
+                    <button style="font-weight: bold;" class="btn btn-success" style="pointer-events: none;" type="button" disabled>Delivered</button>
+                  </span>
+                </div>
+
+                <hr />
+
+                <!-- Form text disable about consumer -->
+                <div class="form-outline m-4">
+                  <input
+                    class="form-control"
+                    id="formControlReadonly"
+                    type="text"
+                    value="Nguyễn Ngọc Tùng Lâm"
+                    aria-label="readonly input example"
+                    readonly
+                  />
+                  <label class="form-label" for="formControlReadonly"
+                    >Recipient's name</label
+                  >
+                </div>
+
 
               <div class="form-outline m-4">
                 <input class="form-control" id="formControlReadonly" type="text" value="0988808470"
@@ -74,20 +111,38 @@
                 <label class="form-label" for="formControlReadonly" style="margin-left: 0">Phone Number</label>
               </div>
 
-              <div class="form-outline m-4">
-                <input class="form-control" id="formControlReadonly" type="text"
-                  value="Nearby Xuong Rong Lake, go ahead 100m" aria-label="readonly input example" readonly />
-                <label class="form-label" for="formControlReadonly">Address</label>
-              </div>
-              <hr />
-              <div class="product-review">
-                <div class="container d-flex">
-                  <span style="font-size: 24px; font-weight: bold" class="">Satisfied Rating:</span>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="stars">
-                        <form action="">
-                          <input class="star star-5" id="star-5" type="radio" name="star" />
+
+                <div class="form-outline m-4">
+                  <input
+                    class="form-control"
+                    id="formControlReadonly"
+                    type="text"
+                    value="Nearby Xuong Rong Lake, go ahead 100m"
+                    aria-label="readonly input example"
+                    readonly
+                  />
+                  <label class="form-label" for="formControlReadonly"
+                    >Address</label
+                  >
+                </div>
+                <hr />
+
+                <!-- Product Reviewing -->
+                <div class="product-review">
+                  <div class="container d-flex">
+                    <span style="font-size: 24px; font-weight: bold" class=""
+                      >Satisfied Rating:</span
+                    >
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="stars">
+                          <form action="">
+                            <input
+                              class="star star-5"
+                              id="star-5"
+                              type="radio"
+                              name="star"
+                            />
 
                           <label class="star star-5" for="star-5"></label>
 
