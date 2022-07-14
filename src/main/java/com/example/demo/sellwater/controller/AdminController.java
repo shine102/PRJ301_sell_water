@@ -18,11 +18,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.sellwater.dto.ChangePassDto;
 import com.example.demo.sellwater.dto.UserDto;
+import com.example.demo.sellwater.model.BlogModel;
 import com.example.demo.sellwater.model.CategoryModel;
 import com.example.demo.sellwater.model.DrinkModel;
+import com.example.demo.sellwater.model.OrderModel;
 import com.example.demo.sellwater.service.BlogService;
 import com.example.demo.sellwater.service.CategoryService;
 import com.example.demo.sellwater.service.DrinkService;
+import com.example.demo.sellwater.service.OrderService;
 import com.example.demo.sellwater.service.UserService;
 
 
@@ -40,6 +43,8 @@ public class AdminController {
     private UserService userService = new UserService();
     @Autowired
     private HttpSession session;
+    @Autowired
+    private OrderService orderService = new OrderService();
 
     
     @GetMapping("/login")
@@ -50,7 +55,7 @@ public class AdminController {
     @PostMapping("/login")
     public String postLogin(UserDto user, Model model, RedirectAttributes redirectAttrs) { 
         if (userService.checkUser(user.getUsername().trim(), user.getPassword())) {
-            session.setAttribute("username", user.getUsername());
+            session.setAttribute("username", "admin");
             return "redirect:/admin/panel";
         } else {
             redirectAttrs.addFlashAttribute("error", "Wrong username or password");
@@ -60,15 +65,88 @@ public class AdminController {
 
     @GetMapping("/panel")
     public String panel(Model model, @RequestParam(defaultValue = "1") Long categoryId) {
-
-        List<CategoryModel> categoryList = categoryService.fetchCategoryList();
+        if(checkLogin()){
+            return "redirect:/admin/login";
+        } else {
+            List<CategoryModel> categoryList = categoryService.fetchCategoryList();
+            List<DrinkModel> drinkList = drinkService.fetchDrinkListByCategoryId(categoryId);
+            List<BlogModel> blogList = blogService.fetchBlogList();
+            List<OrderModel> orderList = orderService.fetchOrderList();
+            model.addAttribute("blogList", blogList);
+            model.addAttribute("drinkList", drinkList);
+            model.addAttribute("categoryList", categoryList);
+            model.addAttribute("orderList", orderList);
+            return "admin_panel";
+        }
         
-        List<DrinkModel> drinkList = drinkService.fetchDrinkListByCategoryId(categoryId);
+    }
+    
+    @PostMapping("/panel/drink")
+    public String addDrink(@RequestBody DrinkModel drink) {
+        if(checkLogin()){
+            return "redirect:/admin/login";
+        } else {
+            drinkService.saveDrink(drink);
+            return "redirect:/admin/panel";
+        }
+    }
 
-        model.addAttribute("drinkList", drinkList);
-        model.addAttribute("categoryList", categoryList);
+    @PutMapping("/panel/drink")
+    public String modifyDrink(@RequestBody DrinkModel drink) {
+        if(checkLogin()){
+            return "redirect:/admin/login";
+        } else {
+            drinkService.modifyDrink(drink);
+            return "redirect:/admin/panel";
+        }
+    }
 
-        return "admin_panel";
+    @DeleteMapping("/panel/drink")
+    public String deleteDrink(@RequestBody DrinkModel drink) {
+        if(checkLogin()){
+            return "redirect:/admin/login";
+        } else {
+            drinkService.saveDrink(drink);
+            return "redirect:/admin/panel";
+        }
+    }
+
+    @PostMapping("/panel/blog")
+    public String addBlog(@RequestBody BlogModel blog) {
+        if(checkLogin()){
+            return "redirect:/admin/login";
+        } else {
+            blogService.saveBlog(blog);
+            return "redirect:/admin/panel";
+        }
+    }
+
+    @PutMapping("/panel/blog")
+    public String modifyBlog(@RequestBody BlogModel blog) {
+        if(checkLogin()){
+            return "redirect:/admin/login";
+        } else {
+            blogService.modifyBlog(blog);
+            return "redirect:/admin/panel";
+        }
+    }
+
+    @DeleteMapping("/panel/blog")
+    public String deleteBlog(@RequestBody BlogModel blog) {
+        if(checkLogin()){
+            return "redirect:/admin/login";
+        } else {
+            blogService.saveBlog(blog);
+            return "redirect:/admin/panel";
+        }
+    }
+
+    private boolean checkLogin() {
+        if (session.getAttribute("username") == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @PostMapping("/change-pass")
@@ -88,5 +166,8 @@ public class AdminController {
         session.invalidate();
         return "redirect:/";
     }
+
+    // order controller
+    // 
 
 }

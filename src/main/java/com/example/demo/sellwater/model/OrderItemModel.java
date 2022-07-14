@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-@Entity
+@Entity 
 @Data
 @Table(name = "order_item")
 public class OrderItemModel {

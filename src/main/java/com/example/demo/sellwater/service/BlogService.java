@@ -21,5 +21,11 @@ public class BlogService {
         return blogRepo.findById(id).get();
     }
 
+    public void saveBlog(BlogModel blog) {
+    }
+
+    public void modifyBlog(BlogModel blog) {
+    }
+
 
 }

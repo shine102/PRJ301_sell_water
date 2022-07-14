@@ -32,4 +32,18 @@ public class DrinkService {
 
         return drinkList;
     }
+
+    public void saveDrink(DrinkModel drink) {
+    }
+
+    public void modifyDrink(DrinkModel drink) {
+    }
+
+    public DrinkModel fetchDrinkById(Long id) {
+        DrinkModel drink = drinkRepo.findById(id).orElse(null);
+        if(drink == null){
+            throw new DrinkNotFound("Drink not found");
+        }
+        return drink;
+    }
 }

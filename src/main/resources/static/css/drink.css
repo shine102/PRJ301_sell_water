@@ -14,13 +14,9 @@
     text-align: center; 
 }
 
-.row.row-cols-6.justify-content-md-center{
-    width: 100%;
-}
-
 .row.mb-4.mb-lg-5{
     width: 100%;
-    margin-left: 4%;
+    margin-left: 2%;
 }
 
 .col-12.col-md-6.col-lg-3.col-xl-2.mt-2.mt-lg-3 {

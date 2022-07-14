@@ -13,19 +13,31 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-@Entity
+@Entity 
 @Data
 @Table(name="drink_tab")
 public class DrinkModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @Column(name="drink_name")
     private String drinkName;
+    
     @Column(name="price")
     private int price;
+
     @Column(name="image_link")
     private String imageLink;
+    
+    @Column(columnDefinition = "float(1) default 0")
+    private double rating = 0;
+    
+    @Column(columnDefinition = "integer default 0")
+    private int numberRating = 0;
+
+    @Column(columnDefinition = "nvarchar(max)")
+    private String description;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")

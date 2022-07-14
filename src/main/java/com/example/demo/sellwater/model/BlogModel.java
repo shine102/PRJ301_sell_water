@@ -11,7 +11,7 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-@Entity
+@Entity 
 @Data
 @Table(name = "blog_tab")
 public class BlogModel {

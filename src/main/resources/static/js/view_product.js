@@ -1,28 +1,22 @@
 function addToCart(id, name, price){
+    var quantity = document.getElementById("drink_quantity").value;
     var string = localStorage.getItem('drinkList');
-    var drinkList;
     if (string !== null){
         drinkList = JSON.parse(string);
         for(var i = 0; i < drinkList.length; i++){
             var flag = true;
             if(id === drinkList[i].id){
                 flag = false;
-                drinkList[i].quantity ++;
+                drinkList[i].quantity = Number(drinkList[i].quantity) + Number(quantity);
                 break;
             }
         } 
-        if (flag) drinkList.push({'id': id, 'name' : name, 'quantity' : 1,  'price': price});
+        if (flag) drinkList.push({'id': id, 'name' : name, 'quantity' : quantity, 'price': price});
     } else {
         drinkList = [];
-        drinkList.push({'id': id, 'name' : name, 'quantity' : 1,  'price': price});
+        drinkList.push({'id': id, 'name' : name, 'quantity' : quantity,  'price': price});
     }
+    console.log(drinkList);
     localStorage.setItem('drinkList', JSON.stringify(drinkList));
-}
-
-function changeCategory(id){
-    window.location.href = "./" + id;
-}
-
-function goToDrink(id){
-    window.location.href = "/drink/" + id;
+    alert("Added to cart successfully!");
 }

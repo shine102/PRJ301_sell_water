@@ -1,3 +1,6 @@
 .footer-text{
     color:rgb(255, 255, 255);
 }
+.navbar.bottom.bg-dark{
+    margin-top: 50px;
+}
