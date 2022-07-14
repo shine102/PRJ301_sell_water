@@ -169,5 +169,14 @@ public class AdminController {
 
     // order controller
     // 
+    @PostMapping("/order/approved")
+    public String approved(RedirectAttributes redirectAttrs){
+        if(checkLogin()){
+            
+        } else {
+            return "redirect:/admin/login";
+        }
+        return "redirect:/admin/panel";
+    }
 
 }

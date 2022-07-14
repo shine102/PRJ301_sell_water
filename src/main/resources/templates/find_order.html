@@ -13,7 +13,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-
+  <script src="/js/find_order.js"></script>
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png" type="image/x-icon">
   <style>
     .checkout_method {
       padding: 7px;
@@ -257,7 +258,8 @@
     <!-- Đơn hàng không đúng ID -->
     <div id="incorrect-order_id">
       <div class="main_header">
-        <input type="text" placeholder="Order ID" /><i class="fa fa-search card-product-note-icon"></i>
+        <input type="text" placeholder="Order ID" />
+        <input type="submit" style="width:100px;" value="Search" onsubmit="search()">
       </div>
 
       <div class="section_content d-none">
