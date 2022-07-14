@@ -109,6 +109,7 @@
         padding-right: 3px;
       }
 
+      /* -------- */
       * {
         margin: 0;
         padding: 0;
@@ -252,6 +253,8 @@
         font-family: FontAwesome;
       }
 
+      .comment {
+      }
 
       /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
     </style>
@@ -259,23 +262,8 @@
   <body>
     <div th:include="../static/components/navbar.html"></div>
     <section id="ordered" class="">
-      <!-- Header: tra cuu don hang -->
-      <div class="header_container">
-        <img
-          src="https://order.thecoffeehouse.com/_nuxt/img/search-order-icon.03a807c.svg"
-          alt="logo"
-        />
-        <h1>Order Look Up</h1>
-      </div>
-
       <!-- Đơn hàng không đúng ID -->
       <div id="incorrect-order_id">
-        <div class="main_header">
-          <input type="text" placeholder="Order ID" /><i
-            class="fa fa-search card-product-note-icon"
-          ></i>
-        </div>
-
         <div class="section_content d-none">
           <div class="main_content">
             <img
@@ -351,100 +339,8 @@
                   >
                 </div>
                 <hr />
-                <div class="product-review">
-                  <div class="container d-flex">
-                    <span style="font-size: 24px; font-weight: bold" class=""
-                      >Satisfied Rating:</span
-                    >
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="stars">
-                          <form action="">
-                            <input
-                              class="star star-5"
-                              id="star-5"
-                              type="radio"
-                              name="star"
-                            />
-
-                            <label class="star star-5" for="star-5"></label>
-
-                            <input
-                              class="star star-4"
-                              id="star-4"
-                              type="radio"
-                              name="star"
-                            />
-
-                            <label class="star star-4" for="star-4"></label>
-
-                            <input
-                              class="star star-3"
-                              id="star-3"
-                              type="radio"
-                              name="star"
-                            />
-
-                            <label class="star star-3" for="star-3"></label>
-
-                            <input
-                              class="star star-2"
-                              id="star-2"
-                              type="radio"
-                              name="star"
-                            />
-
-                            <label class="star star-2" for="star-2"></label>
-
-                            <input
-                              class="star star-1"
-                              id="star-1"
-                              type="radio"
-                              name="star"
-                            />
-
-                            <label class="star star-1" for="star-1"></label>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- <div class="comment">
-                  <input class="comment_text" type="text" placeholder="Comment...">
-                  <button style="width:fit-content" type="submit" id="">send</button>
-                </div> -->
-                  <div style="margin-left: 23px" class="row">
-                    <div class="form-outline col-auto p-0">
-                      <input
-                        type="text"
-                        id="formTextExample2"
-                        class="comment_text"
-                        placeholder="Comment..."
-                        aria-describedby="textExample2"
-                        style="height: 35px; font-size: 15px; width: 550px; padding-left: 5px;"
-                      />
-                    </div>
-                    <div class="col-auto">
-                      <button
-                        style="
-                          padding: 7px;
-                          margin-left: 3px;
-                          background-color: rgb(250, 140, 22);
-                          font-size: 12px;
-                          color: white;
-                          font-weight: bold;
-                        "
-                        type="button"
-                        class="btn btn-warning"
-                        onclick="alert('Thanks for your feedback!')"
-                      >
-                        Send
-                      </button>
-                    </div>
-                  </div>
-                </div>
               </div>
+
               <!-- Content in the right -->
               <div class="right-content col-md-6">
                 <div class="card">
@@ -517,8 +413,53 @@
                       59.000đ
                     </p>
                   </div>
-                  <div class="finish_find-order">
-                    <button style="color: #fa8c16; border-radius: 30px; background-color: white; padding: 10px 15px; font-weight: bold;" class="btn btn-finish">Finish</button>
+                  <div style="padding-top: 10px; margin-right: -200px">
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="btn-check"
+                      autocomplete="off"
+                      name="check" 
+                      onclick="onlyOne(this)"
+                    />
+                    <label
+                      style="font-size: 10px; font-weight: bold"
+                      class="btn_check btn btn-success"
+                      for="btn-check"
+                      >Delivered</label
+                    >
+                  </div>
+                  <div style="padding-top: 10px; margin-right: -200px">
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="btn-check2"
+                      autocomplete="off"
+                      name="check" 
+                      onclick="onlyOne(this)"
+                    />
+                    <label
+                      style="font-size: 10px; font-weight: bold"
+                      class="btn_check btn btn-info"
+                      for="btn-check2"
+                      >On-way</label
+                    >
+                  </div>
+                  <div style="padding-top: 10px; margin-right: 0px">
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="btn-check3"
+                      autocomplete="off"
+                      name="check" 
+                      onclick="onlyOne(this)"
+                    />
+                    <label
+                      style="font-size: 10px; font-weight: bold"
+                      class="btn_check btn btn-danger"
+                      for="btn-check3"
+                      >Cancel</label
+                    >
                   </div>
                 </div>
               </div>
@@ -528,6 +469,14 @@
       </div>
     </section>
     <div th:include="../static/components/footer.html"></div>
+    <script>
+      function onlyOne(checkbox) {
+        var checkboxes = document.getElementsByName("check");
+        checkboxes.forEach((item) => {
+          if (item !== checkbox) item.checked = false;
+        });
+      }
+    </script>
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
