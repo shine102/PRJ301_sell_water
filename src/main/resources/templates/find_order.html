@@ -303,10 +303,24 @@
                   <h4 class="checkout_title checkout_shipping_head">
                     Order Detail
                   </h4>
+                  <!-- The status of Order -->
+                  <span class="d-inline-block" style="visibility: hidden;" data-mdb-toggle="popover" data-mdb-content="The order is in process of processing.">
+                    <button style="font-weight: bold; background-color: #ccc" class="btn btn-light" style="pointer-events: none;" type="button" disabled>Loading</button>
+                  </span>
+                  <span class="d-inline-block" style="visibility: hidden;" data-mdb-toggle="popover" data-mdb-content="The order has been canceled.">
+                    <button style="font-weight: bold;" class="btn btn-danger" style="pointer-events: none;" type="button" disabled>Cancel</button>
+                  </span>
+                  <span class="d-inline-block" style="visibility: hidden;" data-mdb-toggle="popover" data-mdb-content="The order is on the way">
+                    <button style="font-weight: bold;" class="btn btn-info" style="pointer-events: none;" type="button" disabled>On-way</button>
+                  </span>
+                  <span class="d-inline-block" style="visibility: none;" data-mdb-toggle="popover" data-mdb-content="The order is delivered">
+                    <button style="font-weight: bold;" class="btn btn-success" style="pointer-events: none;" type="button" disabled>Delivered</button>
+                  </span>
                 </div>
 
                 <hr />
 
+                <!-- Form text disable about consumer -->
                 <div class="form-outline m-4">
                   <input
                     class="form-control"
@@ -352,6 +366,8 @@
                   >
                 </div>
                 <hr />
+
+                <!-- Product Reviewing -->
                 <div class="product-review">
                   <div class="container d-flex">
                     <span style="font-size: 24px; font-weight: bold" class=""

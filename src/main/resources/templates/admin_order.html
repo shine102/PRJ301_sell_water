@@ -253,9 +253,7 @@
         font-family: FontAwesome;
       }
 
-      .comment {
-      }
-
+      
       /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
     </style>
   </head>
@@ -366,9 +364,7 @@
                             <h5 class="tch-order-card__title mb-0">
                               1 x Milk Ice Coffee
                             </h5>
-                            <p class="tch-order-card__description mb-0">
-                              Medium, 1 x Medium
-                            </p>
+                            
                             <!---->
                           </div>
                         </div>
@@ -389,9 +385,7 @@
                             <h5 class="tch-order-card__title mb-0">
                               1 x CloudFee Creme Brulee Caramel
                             </h5>
-                            <p class="tch-order-card__description mb-0">
-                              Medium, 1 x Medium
-                            </p>
+                           
                             <!---->
                           </div>
                         </div>
@@ -413,39 +407,24 @@
                       59.000đ
                     </p>
                   </div>
-                  <div style="padding-top: 10px; margin-right: -200px">
+                  <div style="padding-top: 10px;">
                     <input
                       type="checkbox"
                       class="btn-check"
                       id="btn-check"
+                      name="check"
                       autocomplete="off"
-                      name="check" 
                       onclick="onlyOne(this)"
                     />
                     <label
-                      style="font-size: 10px; font-weight: bold"
-                      class="btn_check btn btn-success"
+                      style="font-size: 10px; font-weight: bold; background-color: rgb(189, 188, 188);"
+                      class="btn_check btn btn-light"
                       for="btn-check"
-                      >Delivered</label
+                      >Loading</label
                     >
                   </div>
-                  <div style="padding-top: 10px; margin-right: -200px">
-                    <input
-                      type="checkbox"
-                      class="btn-check"
-                      id="btn-check2"
-                      autocomplete="off"
-                      name="check" 
-                      onclick="onlyOne(this)"
-                    />
-                    <label
-                      style="font-size: 10px; font-weight: bold"
-                      class="btn_check btn btn-info"
-                      for="btn-check2"
-                      >On-way</label
-                    >
-                  </div>
-                  <div style="padding-top: 10px; margin-right: 0px">
+
+                  <div style="padding-top: 10px;">
                     <input
                       type="checkbox"
                       class="btn-check"
@@ -461,6 +440,42 @@
                       >Cancel</label
                     >
                   </div>
+
+                  <div style="padding-top: 10px;">
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="btn-check2"
+                      autocomplete="off"
+                      name="check" 
+                      onclick="onlyOne(this)"
+                    />
+                    <label
+                      style="font-size: 10px; font-weight: bold"
+                      class="btn_check btn btn-info"
+                      for="btn-check2"
+                      >On-way</label
+                    >
+                  </div>
+
+                  <div style="padding-top: 10px;">
+                    <input
+                      type="checkbox"
+                      class="btn-check"
+                      id="btn-check"
+                      autocomplete="off"
+                      name="check" 
+                      onclick="onlyOne(this)"
+                    />
+                    <label
+                      style="font-size: 10px; font-weight: bold"
+                      class="btn_check btn btn-success"
+                      for="btn-check"
+                      >Delivered</label
+                    >
+                  </div>
+                  
+                  
                 </div>
               </div>
             </div>
