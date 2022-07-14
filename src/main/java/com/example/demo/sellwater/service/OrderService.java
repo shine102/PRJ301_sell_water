@@ -58,5 +58,33 @@ public class OrderService {
         List<OrderModel> list = orderRepo.findAll();
         return list;
     }
+
+    public boolean clientCancelOrder(String orderId) {
+        return false;
+    }
+
+    public boolean approvedOrder(String orderId) {
+        OrderModel orderModel = orderRepo.findById(orderId).orElse(null);
+        if(orderModel == null) {
+            return false;
+        } else {
+            String orderStatus = orderModel.getStatus();
+            if(orderStatus.equals("pending")) {
+                orderModel.setStatus("approved");
+                orderRepo.save(orderModel);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public boolean deliveredOrder(String orderId) {
+        return false;
+    }
+
+    public boolean adminCancelOrder(String orderId) {
+        return false;
+    }
     
 }

@@ -34,9 +34,11 @@ public class DrinkService {
     }
 
     public void saveDrink(DrinkModel drink) {
+        drinkRepo.save(drink);
     }
 
     public void modifyDrink(DrinkModel drink) {
+        drinkRepo.save(drink);
     }
 
     public DrinkModel fetchDrinkById(Long id) {
@@ -45,5 +47,9 @@ public class DrinkService {
             throw new DrinkNotFound("Drink not found");
         }
         return drink;
+    }
+
+    public void deleteDrink(Long drinkId) {
+        drinkRepo.deleteById(drinkId);
     }
 }

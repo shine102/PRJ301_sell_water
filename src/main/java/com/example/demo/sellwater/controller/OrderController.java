@@ -5,7 +5,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,13 +41,21 @@ public class OrderController {
     }
 
     @PostMapping("/order/create")
-    public @ResponseBody String createOrder(@Valid @RequestBody OrderCreateDto order, BindingResult bindingResult, Model model){
+    public @ResponseBody String createOrder(@Valid @RequestBody OrderCreateDto order, Model model){
         String id = orderService.createOrder(order);
         if (id == null){
             return "error";
         } else {
             return id;
         }
-        
+    }
+
+    @PostMapping("/order/cancel")
+    public @ResponseBody String cancelOrder(String orderId){
+        if (orderService.clientCancelOrder(orderId)){
+            return "success";
+        } else {
+            return "error";
+        }
     }
 }

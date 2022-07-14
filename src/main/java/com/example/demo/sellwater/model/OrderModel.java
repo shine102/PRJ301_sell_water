@@ -36,7 +36,7 @@ public class OrderModel {
     private String comment;
 
     @Column
-    private String status = "on-way";
+    private String status = "pending";
 
     @Column
     private Date createdAt = new Date();

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.sellwater.dto.ChangePassDto;
@@ -102,11 +103,11 @@ public class AdminController {
     }
 
     @DeleteMapping("/panel/drink")
-    public String deleteDrink(@RequestBody DrinkModel drink) {
+    public String deleteDrink(Long drinkId) {
         if(checkLogin()){
             return "redirect:/admin/login";
         } else {
-            drinkService.saveDrink(drink);
+            drinkService.deleteDrink(drinkId);
             return "redirect:/admin/panel";
         }
     }
@@ -170,13 +171,43 @@ public class AdminController {
     // order controller
     // 
     @PostMapping("/order/approved")
-    public String approved(RedirectAttributes redirectAttrs){
+    public @ResponseBody String approved(@RequestBody String orderId) {
         if(checkLogin()){
-            
+            if(orderService.approvedOrder(orderId)){
+                return "success";
+            } else {
+                return "error";
+            }
         } else {
-            return "redirect:/admin/login";
+            return "not valid admin!";
         }
-        return "redirect:/admin/panel";
     }
+
+    @PostMapping("/order/delivered")
+    public @ResponseBody String delivered(@RequestBody String orderId) {
+        if(checkLogin()){
+            if(orderService.deliveredOrder(orderId)){
+                return "success";
+            } else {
+                return "error";
+            }
+        } else {
+            return "not valid admin!";
+        }
+    }
+
+    @PostMapping("/order/cancel)")
+    public @ResponseBody String cancel(@RequestBody String orderId) {
+        if(checkLogin()){
+            if(orderService.adminCancelOrder(orderId)){
+                return "success";
+            } else {
+                return "error";
+            }
+        } else {
+            return "not valid admin!";
+        }
+    }
+
 
 }
