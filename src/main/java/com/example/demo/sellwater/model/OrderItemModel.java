@@ -18,8 +18,18 @@ import lombok.Data;
 @Data
 @Table(name = "order_item")
 public class OrderItemModel {
+    public OrderItemModel() {
+    }
+    
+    public OrderItemModel(int quantity, DrinkModel drink, OrderModel order) {
+        this.quantity = quantity;
+        this.order = order;
+        this.drink = drink;
+    }
+
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
     
     @Column(name = "quantity")

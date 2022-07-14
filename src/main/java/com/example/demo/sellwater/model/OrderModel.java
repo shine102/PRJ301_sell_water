@@ -2,14 +2,14 @@ package com.example.demo.sellwater.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 import lombok.Data;
 
@@ -19,21 +19,29 @@ import lombok.Data;
 
 public class OrderModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    
-    @Column(name = "char_id")
-    private String charId;
+    @Column(name = "id")
+    private String id;
+
+    @Column
+    private String clientName;
 
     @Column(name = "phone")
     private String phone;
- 
+
     @Column(name = "address")
     private String address;
 
-    @Column(name = "comment")
-    private int comment;
+    @Column(name = "comment", columnDefinition = "nvarchar(max)")
+    private String comment;
+
+    @Column
+    private String status = "on-way";
 
     @OneToMany(mappedBy = "id")
     private List<OrderItemModel> orderItem = new ArrayList<>();
+
+    public OrderModel(){
+        UUID uuid = UUID.randomUUID();
+        this.id = uuid.toString();
+    }
 }
