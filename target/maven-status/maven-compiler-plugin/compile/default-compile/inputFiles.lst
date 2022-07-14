@@ -5,6 +5,8 @@ D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\exa
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\repository\UserRepo.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\config\WebSecurityConfig.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\repository\OrderRepo.java
+D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\dto\OrderItemDto.java
+D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\repository\OrderItemRepo.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\service\DrinkService.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\controller\OrderController.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\repository\CategoryRepo.java
@@ -12,6 +14,7 @@ D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\exa
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\exception\BlogNotFound.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\repository\DrinkRepo.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\service\UserService.java
+D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\dto\OrderCreateDto.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\model\DrinkModel.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\model\CategoryModel.java
 D:\FPTU hoc\SE su2022\PRJ301\project\vscode _generate\demo\src\main\java\com\example\demo\sellwater\service\BlogService.java

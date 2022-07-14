@@ -1,11 +1,3 @@
--- create database
-create database SellWater;
--- create table category_tab
-create table category_tab(
-    id int PRIMARY KEY IDENTITY(1,1),
-    category_name varchar(128) not null,
-    image_link varchar(256) not null
-);
 
 -- create sample data
 INSERT INTO category_tab (category_name, image_link) 
@@ -15,17 +7,6 @@ INSERT INTO category_tab (category_name, image_link)
 				  ('Hi-Tea', 'https://res.cloudinary.com/dimxnh34h/image/upload/v1656841765/category/hi-tee/hi-tee_tedq60.png'),
 				  ('Home', 'https://res.cloudinary.com/dimxnh34h/image/upload/v1656841765/category/home/home_dsatbp.png'),
 				  ('Snack & Pie', 'https://res.cloudinary.com/dimxnh34h/image/upload/v1656841766/category/snack/snack_qnb4jb.png');
-				  
-
-
--- create table drink_tab
-create table drink_tab(
-    id INT PRIMARY KEY IDENTITY(1,1),
-    drink_name varchar(128) not null,
-    price int not null,
-    image_link varchar(256) not null,
-    category_id int REFERENCES category_tab(id)
-);
 
 -- create sample data
 
@@ -92,15 +73,6 @@ INSERT INTO drink_tab (drink_name, price, image_link, category_id, description)
                 ('Chicken with Lemon Leaves', 25000, 'https://res.cloudinary.com/dimxnh34h/image/upload/v1656954524/category/snack/kho-ga-la-chanh_995862_400x400_144de2ed4ca449d8b82bc558155e4b2f_large_tyuqva.webp', 6, ' '),
                 ('Dried Jackfruit', 20000, 'https://res.cloudinary.com/dimxnh34h/image/upload/v1656954496/category/snack/mit-say_666228_400x400_062954ca87384c13ab5044766afbec56_large_uk0yd5.webp', 6, ' ');
                
--- create table blog_tab
-create table blog_tab(
-    id int PRIMARY KEY IDENTITY(1,1),
-    blog_title varchar(1024) not null,
-    content varchar(max) not null,
-    created_time datetime DEFAULT GetDate(),
-    image_link varchar(256) not null,
-);
-
 INSERT INTO blog_tab(blog_title, content, image_link)
               VALUES('WHY IS COFFEE SO SOUR?', 'However, this is not accurate. Both the taste of pure Arabica or Robusta, through processing, roasting and roasting, have a mild sour taste. So, coffee has a sour taste, still retains its inherent characteristic aroma, you can rest assured that it is not spoiled coffee. The Coffee House will show the reasons why coffee has a naturally sour taste. 
  Sour taste from preliminary processing. Each type of coffee has an acidity (pH), and this acidity varies by type. In our country, Arabica coffee beans are usually fully washed to ensure maximum flavor and premium quality of this coffee variety. And the characteristic of the wet pre-processing method will give a more sour taste than the dry pre-processing method.
@@ -190,33 +162,4 @@ Vietnamese milk coffee is different from other countries in the world. It has ru
 Unlike other countries that often use ready-made coffee, powdered coffee, etc. Vietnam uses pureed coffee, put it in a special filter, and then mix it with hot boiling water. Each drop of coffee is wavy, dense, and a little bit flowing through that special filter and mixed with condensed milk, creating rich milk coffee cups with a characteristic bitter taste and a sweet taste that so many people love. prefer. Some people use hot milk coffee, many people according to their preferences will add ice, and this is also the hobby of most Vietnamese people.
 
 Because of the special way of making iced milk coffee, as well as the outstanding taste and quality of coffee from a famous coffee land like Vietnam, it has attracted tourists from all over the world when coming to our country. We do not forget to enjoy coffee with milk. They were all conquered by Vietnamese iced milk coffee, spreading the word about the deliciousness and popularity of the drink with specific cultural characteristics and indigenous values ​​of the Vietnamese people.','https://res.cloudinary.com/dimxnh34h/image/upload/v1657009612/news/1_6b92aac513354ad9947042fabbec6265_grande_ep7owh.webp');
-
--- create table order_tab
-
-create table order_tab(
-    id int primary key IDENTITY(1,1),
-    char_id varchar(63),
-    phone varchar(15) not null,
-    address varchar(256) not null
-);
-
--- create table orderitem ( when 1 order have many item)
-
-create table order_item(
-    id int PRIMARY KEY IDENTITY(1,1),
-    order_id int REFERENCES order_tab(id),
-    drink_id int REFERENCES drink_tab(id),
-    quantity int not null
-);
-
--- create table feedback
-create table feedback_tab(
-    id int PRIMARY KEY IDENTITY(1,1),
-    order_id int REFERENCES order_tab(id),
-    star int default 5,
-    comment varchar(max) DEFAULT '',
-);
-
-
-
 

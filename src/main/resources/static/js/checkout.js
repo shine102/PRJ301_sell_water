@@ -1,6 +1,6 @@
 function removeOrder(){
     localStorage.clear();
-    window.location.href = "/category/1";
+    window.location.href = "/category/1";    
 }
 
 function fetchList(){
@@ -26,20 +26,19 @@ function sendOrder(){
     var address = document.getElementById("enter_address").value;
 
     var drinkList = localStorage.getItem("drinkList");
-    var orderDetail = JSON.parse(drinkList);
     $(document).ready(function(){
         $.ajax({
             url: "/order/create",
             type: "POST",
             data: JSON.stringify({
-                "name": name,
-                "phone": phone,
+                "clientName": name,
+                "phoneNumber": phone,
                 "address": address,
-                "orderDetail": orderDetail
+                "itemList": JSON.parse(drinkList),
             }),
             contentType: "application/json",
             success: function(data){
-                alert("Order success!");
+                alert("Order success, please save your order id: " + data);
                 removeOrder();
             }
         });
