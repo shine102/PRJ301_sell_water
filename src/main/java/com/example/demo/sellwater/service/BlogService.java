@@ -26,8 +26,8 @@ public class BlogService {
         return true;
     }
 
-    public void modifyBlog(BlogModel blog) {
-        blogRepo.save(blog);
+    public void deleteBlog(Long id) {
+        blogRepo.deleteById(id);
     }
 
 

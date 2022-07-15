@@ -21,5 +21,9 @@ public class CategoryService {
     public List<CategoryModel> fetchCategoryList() {
         return categoryRepo.findAll();
     }
+
+    public CategoryModel fetchCategoryById(Long categoryId) {
+        return categoryRepo.findById(categoryId).orElse(null);
+    }
     
 }

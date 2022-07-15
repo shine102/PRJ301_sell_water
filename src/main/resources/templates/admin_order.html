@@ -1,513 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Find Order</title>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
 
-    <style>
-      .checkout_method {
-        padding: 7px;
-        width: 135px;
-        border: 2px solid #fa8c16;
-        border-radius: 50px;
-        cursor: pointer;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Order</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="shortcut icon"
+  href="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png" type="image/x-icon">
 
-      .icon i {
-        cursor: pointer;
-        color: #fa8c16;
-        font-size: 30px;
-      }
+  <style>
+    .checkout_method {
+      padding: 7px;
+      width: 135px;
+      border: 2px solid #fa8c16;
+      border-radius: 50px;
+      cursor: pointer;
+    }
 
-      .checkout_location {
-        padding-left: 15px;
-      }
+    .icon i {
+      cursor: pointer;
+      color: #fa8c16;
+      font-size: 30px;
+    }
 
-      .checkout_location span {
-        padding-left: 5px;
-      }
+    .checkout_location {
+      padding-left: 15px;
+    }
 
-      .row > * {
-        padding-left: 0;
-      }
+    .checkout_location span {
+      padding-left: 5px;
+    }
 
-      .right-content {
-        padding-left: 30px;
-      }
+    .row>* {
+      padding-left: 0;
+    }
 
-      .checkout_shipping_head {
-        border-bottom: 2px solid #fa8c16;
-      }
+    .right-content {
+      padding-left: 30px;
+    }
 
-      .tch-checkout-box__btn-outline {
-        border: 2px solid #fa8c16;
-        border-radius: 25px;
-        padding: 7px;
-      }
+    .checkout_shipping_head {
+      border-bottom: 2px solid #fa8c16;
+    }
 
-      .fa-pen {
-        margin-right: 15px;
-        margin-bottom: 20px;
-        color: #fa8c16;
-      }
+    .tch-checkout-box__btn-outline {
+      border: 2px solid #fa8c16;
+      border-radius: 25px;
+      padding: 7px;
+    }
 
-      .tch-order-card__text_free {
-        color: #fa8c16;
-        padding-bottom: 25px;
-      }
+    .fa-pen {
+      margin-right: 15px;
+      margin-bottom: 20px;
+      color: #fa8c16;
+    }
 
-      .tch-checkout-box--list-submited {
-        background-color: #fa8c16;
-        padding: 15px;
-      }
+    .tch-order-card__text_free {
+      color: #fa8c16;
+      padding-bottom: 25px;
+    }
 
-      .button_submit {
-        background-color: whitesmoke;
-        color: #fa8c16;
-        border-radius: 25px;
-      }
+    .tch-checkout-box--list-submited {
+      background-color: #fa8c16;
+      padding: 15px;
+    }
 
-      .icon_need {
-        margin-left: 364px;
-      }
+    .button_submit {
+      background-color: whitesmoke;
+      color: #fa8c16;
+      border-radius: 25px;
+    }
 
-      .tch-checkout-box__titletotal {
-        border-bottom: 2px solid #fa8c16;
-        padding-bottom: 5px;
-        width: fit-content;
-      }
+    .icon_need {
+      margin-left: 364px;
+    }
 
-      .tch-checkout-box--remove-card {
-        margin-top: 25px;
-        font-size: 15px;
-        color: #fa8c16;
-      }
+    .tch-checkout-box__titletotal {
+      border-bottom: 2px solid #fa8c16;
+      padding-bottom: 5px;
+      width: fit-content;
+    }
 
-      .fa-trash {
-        padding-right: 3px;
-      }
+    .tch-checkout-box--remove-card {
+      margin-top: 25px;
+      font-size: 15px;
+      color: #fa8c16;
+    }
 
-      /* -------- */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Helvetica Neue", Helvetica, Arial;
-      }
+    .fa-trash {
+      padding-right: 3px;
+    }
 
-      #ordered h1 {
-        font-size: 45px;
-        padding-top: 13px;
-        font-weight: bold;
-      }
+    /* -------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Helvetica Neue", Helvetica, Arial;
+    }
 
-      #ordered {
-        position: relative;
-      }
+    #ordered h1 {
+      font-size: 45px;
+      padding-top: 13px;
+      font-weight: bold;
+    }
 
-      .header_container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 150px;
-        margin-bottom: 0;
-      }
+    #ordered {
+      position: relative;
+    }
 
-      .header_container img {
-        margin-right: 8px;
-        width: 3%;
-      }
+    .header_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 150px;
+      margin-bottom: 0;
+    }
 
-      .main_header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-      }
+    .header_container img {
+      margin-right: 8px;
+      width: 3%;
+    }
 
-      .main_header input {
-        width: 530px;
-        height: 42px;
-        padding: 8px;
-        opacity: 0.8;
-      }
+    .main_header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
 
-      .fa-search {
-        background-color: gray;
-        width: 40px;
-        height: 42px;
-        display: flex;
-        flex-direction: column;
-        padding-left: 11px;
-        justify-content: center;
-      }
+    .main_header input {
+      width: 530px;
+      height: 42px;
+      padding: 8px;
+      opacity: 0.8;
+    }
 
-      .main_content {
-        display: flex;
-        justify-content: center;
-        height: 150px;
-        align-content: center;
-      }
+    .fa-search {
+      background-color: gray;
+      width: 40px;
+      height: 42px;
+      display: flex;
+      flex-direction: column;
+      padding-left: 11px;
+      justify-content: center;
+    }
 
-      .main_content img {
-        width: 60px;
-        margin-top: 50px;
-      }
+    .main_content {
+      display: flex;
+      justify-content: center;
+      height: 150px;
+      align-content: center;
+    }
 
-      .text-not-found {
-        font-size: 27px;
-        font-weight: 400;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        margin-top: 12px;
-      }
+    .main_content img {
+      width: 60px;
+      margin-top: 50px;
+    }
 
-      .text-not-found p {
-        width: 800px;
-      }
+    .text-not-found {
+      font-size: 27px;
+      font-weight: 400;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin-top: 12px;
+    }
 
-      .product-review {
-        font-size: 20px;
-        /* color: #fa8c16; */
-      }
+    .text-not-found p {
+      width: 800px;
+    }
 
-      body {
-        background-color: #eee;
-      }
+    .product-review {
+      font-size: 20px;
+      /* color: #fa8c16; */
+    }
 
-      div.stars {
-        width: 220px;
+    body {
+      background-color: #eee;
+    }
 
-        display: inline-block;
-      }
+    div.stars {
+      width: 220px;
 
-      .mt-200 {
-        margin-top: 200px;
-      }
+      display: inline-block;
+    }
 
-      input.star {
-        display: none;
-      }
+    .mt-200 {
+      margin-top: 200px;
+    }
 
-      label.star {
-        float: right;
+    input.star {
+      display: none;
+    }
 
-        padding: 3px 10px 5px 5px;
+    label.star {
+      float: right;
 
-        font-size: 20px;
+      padding: 3px 10px 5px 5px;
 
-        color: #4a148c;
+      font-size: 20px;
 
-        transition: all 0.2s;
-      }
+      color: #4a148c;
 
-      input.star:checked ~ label.star:before {
-        content: "\f005";
+      transition: all 0.2s;
+    }
 
-        color: #fd4;
+    input.star:checked~label.star:before {
+      content: "\f005";
 
-        transition: all 0.25s;
-      }
+      color: #fd4;
 
-      input.star-5:checked ~ label.star:before {
-        color: #fe7;
+      transition: all 0.25s;
+    }
 
-        text-shadow: 0 0 20px #952;
-      }
+    input.star-5:checked~label.star:before {
+      color: #fe7;
 
-      input.star-1:checked ~ label.star:before {
-        color: #f62;
-      }
+      text-shadow: 0 0 20px #952;
+    }
 
-      label.star:hover {
-        transform: rotate(-15deg) scale(1.3);
-      }
+    input.star-1:checked~label.star:before {
+      color: #f62;
+    }
 
-      label.star:before {
-        content: "\f006";
-        font-family: FontAwesome;
-      }
+    label.star:hover {
+      transform: rotate(-15deg) scale(1.3);
+    }
 
-      /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
-    </style>
-  </head>
-  <body>
-    <div th:include="../static/components/navbar.html"></div>
-    <section id="ordered" >
-      <!-- Đơn hàng không đúng ID -->
-      <div id="incorrect-order_id">
-        <div class="section_content d-none">
-          <div class="main_content">
-            <img
-              src="https://res.cloudinary.com/dimxnh34h/image/upload/v1657445628/icon/waring-not-found.8c0564c_ve2njy.svg"
-              alt=""
-            />
-          </div>
-          <div class="text-not-found">
-            <p>
-              Sorry, we don't have any order with this ID. Please check again.
-            </p>
-          </div>
-        </div>
-      </div>
+    label.star:before {
+      content: "\f006";
+      font-family: FontAwesome;
+    }
 
-      <!-- Đơn hàng nhập đúng ID - chế độ d-none -->
-      <div id="correct_orderid" class="mt-5">
-        <div>
-          <div class="container-fluid container-lg custom-checkout">
-            <div class="row justify-content-center">
-              <!-- Content in the left -->
-              <div class="left-content col-md-6">
-                <div class="d-flex checkout_title justify-content-between">
-                  <h4 class="checkout_title checkout_shipping_head">
-                    Order Detail
-                  </h4>
-                </div>
+    /* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+  </style>
+</head>
 
-                <hr />
-
-                <div class="form-outline m-4">
-                  <input
-                    class="form-control"
-                    id="formControlReadonly"
-                    type="text"
-                    value="Nguyễn Ngọc Tùng Lâm"
-                    aria-label="readonly input example"
-                    readonly
-                  />
-                  <label class="form-label" for="formControlReadonly"
-                    >Recipient's name</label
-                  >
-                </div>
-
-                <div class="form-outline m-4">
-                  <input
-                    class="form-control"
-                    id="formControlReadonly"
-                    type="text"
-                    value="0988808470"
-                    aria-label="readonly input example"
-                    readonly
-                  />
-                  <label
-                    class="form-label"
-                    for="formControlReadonly"
-                    style="margin-left: 0"
-                    >Phone Number</label
-                  >
-                </div>
-
-                <div class="form-outline m-4">
-                  <input
-                    class="form-control"
-                    id="formControlReadonly"
-                    type="text"
-                    value="Nearby Xuong Rong Lake, go ahead 100m"
-                    aria-label="readonly input example"
-                    readonly
-                  />
-                  <label class="form-label" for="formControlReadonly"
-                    >Address</label
-                  >
-                </div>
-                <hr />
+<body>
+  <div th:include="../static/components/navbar.html"></div>
+  <section id="ordered">
+    <div id="correct_orderid" class="mt-5">
+      <div>
+        <div class="container-fluid container-lg custom-checkout">
+          <div class="row justify-content-center">
+            <!-- Content in the left -->
+            <div class="left-content col-md-6">
+              <div class="d-flex checkout_title justify-content-between">
+                <h4 class="checkout_title checkout_shipping_head">
+                  Order Detail
+                </h4>
               </div>
 
-              <!-- Content in the right -->
-              <div class="right-content col-md-6">
-                <div class="card">
-                  <div class="card-body">
-                    <div
-                      class="tch-checkout-box tch-checkout-box--list-ordered tch-checkout-border"
-                    >
-                      <div class="d-flex justify-content-between">
-                        <h4 class="tch-checkout-box__title mb-0">
-                          Selected dishes
-                        </h4>
-                      </div>
-                      <br />
-                      <div
-                        class="tch-order-card tch-order-card--border d-flex align-items-center justify-content-between"
-                      >
+              <hr />
+
+              <div class="form-outline m-4">
+                <input class="form-control" id="formControlReadonly" type="text" th:value="${order.clientName}"
+                  aria-label="readonly input example" readonly />
+                <label class="form-label" for="formControlReadonly">Recipient's name</label>
+              </div>
+
+              <div class="form-outline m-4">
+                <input class="form-control" id="formControlReadonly" type="text" th:value="${order.phoneNumber}"
+                  aria-label="readonly input example" readonly />
+                <label class="form-label" for="formControlReadonly" style="margin-left: 0">Phone Number</label>
+              </div>
+
+              <div class="form-outline m-4">
+                <input class="form-control" id="formControlReadonly" type="text"
+                  th:value="${order.address}" aria-label="readonly input example" readonly />
+                <label class="form-label" for="formControlReadonly">Address</label>
+              </div>
+              <hr />
+            </div>
+
+            <!-- Content in the right -->
+            <div class="right-content col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <div class="tch-checkout-box tch-checkout-box--list-ordered tch-checkout-border">
+                    <div class="d-flex justify-content-between">
+                      <h4 class="tch-checkout-box__title mb-0">
+                        Selected dishes
+                      </h4>
+                    </div>
+                    <br />
+                    <div class="tch-order-card tch-order-card--border d-flex align-items-center justify-content-between" th:each=" item : ${order.itemList}">
+                      <div>
                         <div class="tch-order-card__left d-flex">
-                          <span
-                            class="tch-order-card__icon d-flex align-items-center"
-                            ><i class="fa fa-pen"></i
-                          ></span>
+                          <span class="tch-order-card__icon d-flex align-items-center"><i class="fa fa-pen"></i></span>
                           <div class="tch-order-card__content">
-                            <h5 class="tch-order-card__title mb-0">
+                            <h5 class="tch-order-card__title mb-0" th:text="${item.quantity} + ' x ' + ${item.name}">
                               1 x Milk Ice Coffee
                             </h5>
-                            
+
                             <!---->
                           </div>
                         </div>
                         <div class="tch-order-card__right">
-                          <p class="tch-order-card__price mb-0">29.000đ</p>
-                        </div>
-                      </div>
-                      <br />
-                      <div
-                        class="tch-order-card tch-order-card--border d-flex align-items-center justify-content-between"
-                      >
-                        <div class="tch-order-card__left d-flex">
-                          <span
-                            class="tch-order-card__icon d-flex align-items-center"
-                            ><i class="fa fa-pen"></i
-                          ></span>
-                          <div class="tch-order-card__content">
-                            <h5 class="tch-order-card__title mb-0">
-                              1 x CloudFee Creme Brulee Caramel
-                            </h5>
-                           
-                            <!---->
-                          </div>
-                        </div>
-                        <div class="tch-order-card__right">
-                          <p class="tch-order-card__price mb-0">49.000đ</p>
+                          <p class="tch-order-card__price mb-0" th:text="${item.price} + ' đ'">29.000đ</p>
                         </div>
                       </div>
                     </div>
+                    <br />
                   </div>
                 </div>
-                <div
-                  class="tch-checkout-box tch-checkout-box--list-submited d-flex justify-content-between"
-                >
-                  <div>
-                    <p class="tch-order-card__textsubmit text-white mb-0">
-                      Total
-                    </p>
-                    <p class="tch-order-card__textsubmit text-white f-600 mb-0">
-                      59.000đ
-                    </p>
-                  </div>
-                  <div style="padding-top: 10px;">
-                    <input
-                      type="checkbox"
-                      class="btn-check"
-                      id="btn-check"
-                      name="check"
-                      autocomplete="off"
-                      onclick="onlyOne(this)"
-                    />
-                    <label
-                      style="font-size: 10px; font-weight: bold; background-color: rgb(189, 188, 188);"
-                      class="btn_check btn btn-light"
-                      for="btn-check"
-                      >Loading</label
-                    >
-                  </div>
+              </div>
+              <div class="tch-checkout-box tch-checkout-box--list-submited d-flex justify-content-between">
+                <div>
+                  <p class="tch-order-card__textsubmit text-white mb-0">
+                    Total
+                  </p>
+                  <p class="tch-order-card__textsubmit text-white f-600 mb-0" th:text="${total}">
+                    59.000đ
+                  </p>
+                  <p class="tch-order-card__textsubmit text-white mb-0">
+                    Status
+                  </p>
 
-                  <div style="padding-top: 10px;">
-                    <input
-                      type="checkbox"
-                      class="btn-check"
-                      id="btn-check3"
-                      autocomplete="off"
-                      name="check" 
-                      onclick="onlyOne(this)"
-                    />
-                    <label
-                      style="font-size: 10px; font-weight: bold"
-                      class="btn_check btn btn-danger"
-                      for="btn-check3"
-                      >Cancel</label
-                    >
+                  <div style="padding-top: 5px;">
+                    <input type="checkbox" class="btn-check" id="btn-check" name="pending" autocomplete="off"/>
+                    <label style="font-size: 10px; font-weight: bold; background-color: rgb(189, 188, 188);"
+                      class="btn_check btn btn-light" for="btn-check" th:text="${status}">pending</label>
                   </div>
-
-                  <div style="padding-top: 10px;">
-                    <input
-                      type="checkbox"
-                      class="btn-check"
-                      id="btn-check2"
-                      autocomplete="off"
-                      name="check" 
-                      onclick="onlyOne(this)"
-                    />
-                    <label
-                      style="font-size: 10px; font-weight: bold"
-                      class="btn_check btn btn-info"
-                      for="btn-check2"
-                      >On-way</label
-                    >
-                  </div>
-
-                  <div style="padding-top: 10px;">
-                    <input
-                      type="checkbox"
-                      class="btn-check"
-                      id="btn-check"
-                      autocomplete="off"
-                      name="check" 
-                      onclick="onlyOne(this)"
-                    />
-                    <label
-                      style="font-size: 10px; font-weight: bold"
-                      class="btn_check btn btn-success"
-                      for="btn-check"
-                      >Delivered</label
-                    >
-                  </div>
-                  
-                  
                 </div>
+                  <div style="padding-top: 35px;">
+                    <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off" name="cancel"
+                      onclick="onlyOne(this)" />
+                    <label style="font-size: 10px; font-weight: bold" class="btn_check btn btn-danger"
+                      for="btn-check3">Cancel</label>
+                  </div>
+
+                  <div style="padding-top: 35px;">
+                    <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off" name="onway"
+                      onclick="onlyOne(this)" />
+                    <label style="font-size: 10px; font-weight: bold" class="btn_check btn btn-info"
+                      for="btn-check2">On-way</label>
+                  </div>
+
+                  <div style="padding-top: 35px;">
+                    <input type="checkbox" class="btn-check" id="btn-check4" autocomplete="off" name="delivered"
+                      onclick="onlyOne(this)" />
+                    <label style="font-size: 10px; font-weight: bold" class="btn_check btn btn-success"
+                      for="btn-check4">Delivered</label>
+                  </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <div th:include="../static/components/footer.html"></div>
-    <script>
-      function onlyOne(checkbox) {
-        var checkboxes = document.getElementsByName("check");
-        checkboxes.forEach((item) => {
-          if (item !== checkbox) item.checked = false;
-        });
-      }
-    </script>
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    </div>
+  </section>
+  <script>
+    function onlyOne(checkbox) {
+      var checkboxes = document.getElementsByClassName("btn-check");
+      var orderId = document.getElementById('order-id-here').innerHTML;
+      for(let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] === checkbox) {
+          checkboxes[i].checked = false;
+          $.ajax('/admin/order/' + checkboxes[i].name + '?orderId=' + orderId, {
+            type: 'GET',
+            success: function(data) {
+              alert(data);
+              window.location.reload();
+            }
+          });
+        }
+      };
+    }
+  </script>
+  <p th:text="${orderId}" id="order-id-here" style="visibility:hidden"></p>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+  </script>
+</body>
+
 </html>

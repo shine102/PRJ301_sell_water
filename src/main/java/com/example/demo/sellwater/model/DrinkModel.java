@@ -3,7 +3,6 @@ package com.example.demo.sellwater.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,7 +41,7 @@ public class DrinkModel {
     @Column(columnDefinition = "nvarchar(max)")
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private CategoryModel category;
 

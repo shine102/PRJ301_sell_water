@@ -23,5 +23,13 @@ public class OrderCreateDto {
     @NotEmpty
     private ArrayList<OrderItemDto> itemList;
 
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (OrderItemDto item : itemList) {
+            totalPrice += item.getQuantity() * item.getPrice();
+        }
+        return totalPrice;
+    }
+
 
 }

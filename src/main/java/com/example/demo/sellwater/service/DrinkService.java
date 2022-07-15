@@ -37,10 +37,6 @@ public class DrinkService {
         drinkRepo.save(drink);
     }
 
-    public void modifyDrink(DrinkModel drink) {
-        drinkRepo.save(drink);
-    }
-
     public DrinkModel fetchDrinkById(Long id) {
         DrinkModel drink = drinkRepo.findById(id).orElse(null);
         if(drink == null){

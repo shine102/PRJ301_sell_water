@@ -1,5 +1,6 @@
 package com.example.demo.sellwater.controller;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.sellwater.dto.AddDrinkDto;
 import com.example.demo.sellwater.dto.ChangePassDto;
+import com.example.demo.sellwater.dto.OrderCreateDto;
+import com.example.demo.sellwater.dto.UpdateDrinkDto;
 import com.example.demo.sellwater.dto.UserDto;
 import com.example.demo.sellwater.model.BlogModel;
 import com.example.demo.sellwater.model.CategoryModel;
@@ -79,41 +84,55 @@ public class AdminController {
             model.addAttribute("orderList", orderList);
             return "admin_panel";
         }
-        
     }
     
     @PostMapping("/panel/drink")
-    public String addDrink(@RequestBody DrinkModel drink) {
+    public String addDrink(AddDrinkDto drink) {
         if(checkLogin()){
             return "redirect:/admin/login";
         } else {
-            drinkService.saveDrink(drink);
+            System.out.println(1);
+            DrinkModel drinkModel = new DrinkModel();
+            System.out.println(2);
+            drinkModel.setDrinkName(drink.getDrinkName());
+            drinkModel.setPrice(drink.getPrice());
+            drinkModel.setImageLink(drink.getImageLink());
+            drinkModel.setDescription(drink.getDescription());
+            drinkModel.setCategory(categoryService.fetchCategoryById(drink.getCategoryId()));
+            System.out.println(3);
+            drinkService.saveDrink(drinkModel);
+            System.out.println(4);
             return "redirect:/admin/panel";
         }
     }
 
-    @PutMapping("/panel/drink")
-    public String modifyDrink(@RequestBody DrinkModel drink) {
+    @PutMapping("/panel/drink/{id}")
+    public @ResponseBody String updateDrink(@RequestBody UpdateDrinkDto drink, @PathVariable Long id) {
         if(checkLogin()){
             return "redirect:/admin/login";
         } else {
-            drinkService.modifyDrink(drink);
+            DrinkModel drinkModel = drinkService.fetchDrinkById(id);
+            drinkModel.setDrinkName(drink.getDrinkName());
+            drinkModel.setPrice(drink.getPrice());
+            drinkModel.setImageLink(drink.getImageLink());
+            drinkModel.setDescription(drink.getDescription());
+            drinkService.saveDrink(drinkModel);
             return "redirect:/admin/panel";
         }
     }
 
-    @DeleteMapping("/panel/drink")
-    public String deleteDrink(Long drinkId) {
+    @DeleteMapping("/panel/drink/{id}")
+    public @ResponseBody String deleteDrink(@PathVariable Long id) {
         if(checkLogin()){
             return "redirect:/admin/login";
         } else {
-            drinkService.deleteDrink(drinkId);
+            drinkService.deleteDrink(id);
             return "redirect:/admin/panel";
         }
     }
 
     @PostMapping("/panel/blog")
-    public String addBlog(@RequestBody BlogModel blog) {
+    public String addBlog(BlogModel blog) {
         if(checkLogin()){
             return "redirect:/admin/login";
         } else {
@@ -122,22 +141,25 @@ public class AdminController {
         }
     }
 
-    @PutMapping("/panel/blog")
-    public String modifyBlog(@RequestBody BlogModel blog) {
+    @PutMapping("/panel/blog/{id}")
+    public @ResponseBody String modifyBlog(@PathVariable Long id, @RequestBody BlogModel blog) {
         if(checkLogin()){
             return "redirect:/admin/login";
         } else {
-            blogService.modifyBlog(blog);
+            BlogModel blogModel = blogService.fetchBlogById(id);
+            blogModel.setBlogTitle(blog.getBlogTitle());
+            blogModel.setContent(blog.getContent());
+            blogService.saveBlog(blogModel);
             return "redirect:/admin/panel";
         }
     }
 
-    @DeleteMapping("/panel/blog")
-    public String deleteBlog(@RequestBody BlogModel blog) {
+    @DeleteMapping("/panel/blog/{id}")
+    public @ResponseBody String deleteBlog(@PathVariable Long id) {
         if(checkLogin()){
             return "redirect:/admin/login";
         } else {
-            blogService.saveBlog(blog);
+            blogService.deleteBlog(id);
             return "redirect:/admin/panel";
         }
     }
@@ -152,6 +174,7 @@ public class AdminController {
 
     @PostMapping("/change-pass")
     public String changePass(ChangePassDto user, Model model, RedirectAttributes redirectAttrs) {
+        System.out.println(1);
         if (userService.checkUser(user.getUsername().trim(), user.getPassword())) {
             userService.changePass(user.getUsername(), user.getNewPassword());
             redirectAttrs.addFlashAttribute("success", "Password changed");
@@ -169,10 +192,31 @@ public class AdminController {
     }
 
     // order controller
-    // 
-    @PostMapping("/order/approved")
-    public @ResponseBody String approved(@RequestBody String orderId) {
+    
+    @GetMapping("/panel/order")
+    public String order(Model model, @RequestParam String orderId) {
         if(checkLogin()){
+            return "redirect:/admin/login";
+        } else {
+            if (orderId == null){
+                return "redirect:/admin/panel";
+            } else {
+                
+                OrderCreateDto order = orderService.fetchOrder(orderId);
+                OrderModel orderModel = orderService.fetchOrderById(orderId);
+                model.addAttribute("orderId", orderId);
+                model.addAttribute("order", order);
+                model.addAttribute("total", order.getTotalPrice());
+                model.addAttribute("status", orderModel.getStatus());
+                return "admin_order";
+            }
+        }
+    }
+
+    @GetMapping("/order/onway")
+    public @ResponseBody String approved(@RequestParam String orderId) {
+        System.out.println(orderId);
+        if(!checkLogin()){
             if(orderService.approvedOrder(orderId)){
                 return "success";
             } else {
@@ -183,9 +227,9 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/order/delivered")
-    public @ResponseBody String delivered(@RequestBody String orderId) {
-        if(checkLogin()){
+    @GetMapping("/order/delivered")
+    public @ResponseBody String delivered(@RequestParam String orderId) {
+        if(!checkLogin()){
             if(orderService.deliveredOrder(orderId)){
                 return "success";
             } else {
@@ -196,10 +240,12 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/order/cancel)")
-    public @ResponseBody String cancel(@RequestBody String orderId) {
-        if(checkLogin()){
-            if(orderService.adminCancelOrder(orderId)){
+    @GetMapping("/order/cancel")
+    @ResponseBody
+    public String cancel(@RequestParam String orderId) {
+        System.out.println(1);
+        if(!checkLogin()){
+            if(orderService.cancelOrder(orderId)){
                 return "success";
             } else {
                 return "error";

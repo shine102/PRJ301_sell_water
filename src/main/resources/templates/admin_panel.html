@@ -13,9 +13,10 @@
 	<!-- MDB -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
 
-	<link rel="shortcut icon" href="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png"
-		type="image/x-icon">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="shortcut icon"
+		href="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png" type="image/x-icon">
+	<script src="/js/admin_panel.js"></script>
 	<style>
 		:root {
 			--web-main-theme: #f5b132;
@@ -58,8 +59,8 @@
 		}
 	</style>
 	<script>
-		function changeCategory(id){
-				window.location.href = "./panel?categoryId=" + id;
+		function changeCategory(id) {
+			window.location.href = "./panel?categoryId=" + id;
 		}
 	</script>
 </head>
@@ -68,13 +69,13 @@
 	<header class="web-header container-fluid">
 		<div class="row align-items-center">
 			<div class="col-6 d-flex align-items-center">
-				<img src="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png" width="32"
-					alt="logo">
+				<img src="https://res.cloudinary.com/dimxnh34h/image/upload/v1656842253/icon/footlw_rcpm0w.png"
+					width="32" alt="logo">
 
 				<h5 class="m-0 p-3">The Sell Water House</h5>
 			</div>
 			<div class="col-6 d-flex justify-content-end">
-				<a href="/" class="text-black">Back</a>
+				<a href="/admin/logout" class="text-black">Back</a>
 			</div>
 		</div>
 	</header>
@@ -85,32 +86,43 @@
 				<!-- Pills navs -->
 				<ul class="nav nav-pills mb-3 d-flex flex-column" id="ex1" role="tablist">
 					<li class="nav-item" role="presentation">
-						<a class="nav-link active" data-mdb-toggle="pill" href="#view-drink" role="tab" aria-controls="view-drink"
-							aria-selected="true">View Drink</a>
+						<a class="nav-link active" data-mdb-toggle="pill" href="#view-drink" role="tab"
+							aria-controls="view-drink" aria-selected="true">View Drink</a>
 					</li>
 					<li class="nav-item d-none" role="presentation">
-						<a class="nav-link" data-mdb-toggle="pill" href="#edit-drink" role="tab" aria-controls="edit-drink"
-							aria-selected="false">Edit Drink</a>
+						<a class="nav-link" data-mdb-toggle="pill" href="#edit-drink" role="tab"
+							aria-controls="edit-drink" aria-selected="false">Edit Drink</a>
 					</li>
 					<li class="nav-item" role="presentation">
-						<a class="nav-link" data-mdb-toggle="pill" href="#add-drink" role="tab" aria-controls="add-drink"
-							aria-selected="false">Add Drink</a>
+						<a class="nav-link" data-mdb-toggle="pill" href="#add-drink" role="tab"
+							aria-controls="add-drink" aria-selected="false">Add Drink</a>
 					</li>
 					<li class="nav-item" role="presentation">
-						<a class="nav-link" data-mdb-toggle="pill" href="#view-order" role="tab" aria-controls="view-order"
-							aria-selected="false">View Order</a>
+						<a class="nav-link" data-mdb-toggle="pill" href="#view-order" role="tab"
+							aria-controls="view-order" aria-selected="false">View Order</a>
 					</li>
+
+					<li class="nav-item" role="presentation">
+						<a class="nav-link" data-mdb-toggle="pill" href="#view-blog" role="tab"
+							aria-controls="view-blog" aria-selected="false">View Blogs</a>
+					</li>
+					<li class="nav-item" role="presentation">
+						<a class="nav-link" data-mdb-toggle="pill" href="#add-blog" role="tab"
+							aria-controls="change-password" aria-selected="false">Add Blog</a>
+					</li>
+					<li class="nav-item d-none" role="presentation">
+						<a class="nav-link" data-mdb-toggle="pill" href="#edit-blog" role="tab"
+							aria-controls="edit-blog" aria-selected="false">Edit Blog</a>
+					</li>
+
+					<li class="nav-item d-none" role="presentation">
+						<a class="nav-link" data-mdb-toggle="pill" href="#order-detail" role="tab"
+							aria-controls="order-detail" aria-selected="false">Order Detail</a>
+					</li>
+
 					<li class="nav-item" role="presentation">
 						<a class="nav-link" data-mdb-toggle="pill" href="#change-password" role="tab"
 							aria-controls="change-password" aria-selected="false">Change Password</a>
-					</li>
-					<li class="nav-item" role="presentation">
-						<a class="nav-link" data-mdb-toggle="pill" href="#add-blog" role="tab" aria-controls="change-password"
-							aria-selected="false">Add Blog</a>
-					</li>
-					<li class="nav-item" role="presentation">
-						<a class="nav-link" data-mdb-toggle="pill" href="#view-blog" role="tab" aria-controls="view-blog"
-							aria-selected="false">View Blogs</a>
 					</li>
 				</ul>
 				<!-- Pills navs -->
@@ -125,13 +137,15 @@
 
 							<div class="row row-cols-6">
 								<div class="col-2" th:each="category : ${categoryList}">
-									<img class="menu-img" th:src="${category.imageLink}" th:alt="${category.categoryName}"
+									<img class="menu-img" th:src="${category.imageLink}"
+										th:alt="${category.categoryName}"
 										th:onclick="changeCategory([[${category.id}]])">
 									<p class="menu-title" th:text="${category.categoryName}"></p>
 								</div>
 							</div>
 
-							<div class="web-drinks-list row flex-fill" style="height: calc(100vh - 200px); overflow-y: auto;">
+							<div class="web-drinks-list row flex-fill"
+								style="height: calc(100vh - 200px); overflow-y: auto;">
 
 								<div class="col-lg-3 col-md-4 col-sm-6 mb-1" th:each="drink:${drinkList}">
 									<div class="card border">
@@ -139,8 +153,10 @@
 
 										<div class="card-body">
 											<h5 th:text="${drink.drinkName}" class="card-title"></h5>
-											<a href="#!" class="btn btn-primary web-drinks-list__item" th:data-drink-name="${drink.drinkName}"
-												th:data-drink-id="${drink.id}" th:data-drink-price="${drink.price}" th:data-drink-note="${drink.drinkName}">More</a>
+											<a href="#!" class="btn btn-primary web-drinks-list__item"
+												th:data-drink-name="${drink.drinkName}" th:data-drink-id="${drink.id}"
+												th:data-drink-price="${drink.price}"
+												th:data-drink-image-link="${drink.imageLink}" th:data-drink-description="${drink.description}">More</a>
 										</div>
 									</div>
 								</div>
@@ -150,50 +166,68 @@
 					</div>
 
 					<div class="tab-pane fade" id="edit-drink" role="tabpanel">
-						<form action="" method="post" autocomplete="off">
+
 							<h1 class="text-center">Edit Drink</h1>
 
 							<div class="form-outline m-4">
-								<input type="text" id="edit-drink__drink-id" class="form-control" name="id" readonly required />
+								<input type="text" id="edit-drink__drink-id" class="form-control" name="id" readonly
+									required />
 								<label class="form-label">Drink ID</label>
 							</div>
 
 							<div class="form-outline m-4">
-								<input type="text" id="edit-drink__drink-name" class="form-control" name="name" required />
+								<input type="text" id="edit-drink__drink-name" class="form-control" name="name"
+									required />
 								<label class="form-label">Drink name</label>
 							</div>
 
 							<div class="form-outline m-4">
-								<input type="text" id="edit-drink__drink-price" class="form-control" pattern="\d+" name="price"
-									required />
+								<textarea class="form-control" id="edit-drink__description" rows="6" name="description"></textarea>
+								<label class="form-label">Description</label>
+							</div>
+
+							<div class="form-outline m-4">
+								<input type="text" id="edit-drink__drink-price" class="form-control" pattern="\d+"
+									name="price" required />
 								<label class="form-label">Price</label>
 							</div>
 
 							<div class="form-outline m-4">
-								<input type="text" id="edit-drink__drink-note" class="form-control" name="note" />
-								<label class="form-label">Note</label>
+								<input type="text" id="edit-drink__drink-image-link" class="form-control" name="imageLink" />
+								<label class="form-label">Image Link</label>
 							</div>
 
 							<div class="d-flex justify-content-between m-4">
 								<div>
-									<button type="submit" class="btn btn-primary btn-rounded m-1">Submit</button>
-									<input type="submit" class="btn btn-danger btn-rounded m-1" name="delete" value="delete"></input>
+									<button type="button" class="btn btn-primary btn-rounded m-1" onclick="updateDrink()">Submit</button>
+									<input type="button" class="btn btn-danger btn-rounded m-1" name="delete"
+										value="delete" onclick="deleteDrink()" ></input>
 								</div>
-
 								<button type="button" class="btn btn-dark btn-rounded m-1"
-									onclick="document.querySelector(`a.nav-link[href='#view-drink']`).click()">Cancel</button>
-
+									onclick="document.querySelector(`a.nav-link[href='#view-drink']`).click();">Cancel</button>
 							</div>
-						</form>
 					</div>
 
 					<div class="tab-pane fade" id="add-drink" role="tabpanel">
-						<form action="" method="post" autocomplete="off">
+						<form action="/admin/panel/drink" method="post" autocomplete="off">
 							<h1 class="text-center">Add Drink</h1>
+							<div style="margin-left:25px; width: 95%;">
+								<label class="form-label">Category</label>
+								<select name="categoryId" id="categoryId" class="form-select">
+									<div th:each="category : ${categoryList}" >
+										<option th:value="${category.id}" th:text="${category.categoryName}"></option>
+									</div>
+								</select>
+							</div>
 
 							<div class="form-outline m-4">
-								<input type="text" class="form-control" name="name" required />
+								<input type="text" class="form-control" name="drinkName" required />
 								<label class="form-label">Drink name</label>
+							</div>
+
+							<div class="form-outline m-4">
+								<textarea class="form-control" id="description" rows="6" name="description"></textarea>
+								<label class="form-label">Description</label>
 							</div>
 
 							<div class="form-outline m-4">
@@ -202,8 +236,8 @@
 							</div>
 
 							<div class="form-outline m-4">
-								<input type="text" class="form-control" name="note" />
-								<label class="form-label">Note</label>
+								<input type="text" class="form-control" name="imageLink" />
+								<label class="form-label">Image link</label>
 							</div>
 
 							<div class="m-4">
@@ -218,132 +252,63 @@
 					<div class="tab-pane fade" id="view-order" role="tabpanel">
 						<table class="table align-middle mb-0 bg-white">
 							<thead class="bg-light">
-							  <tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th>Status</th>
-								<th>Total amount</th>
-								<th>Time Order</th>
-								<th>Action</th>
-							  </tr>
+								<tr>
+									<th>ID</th>
+									<th>Name</th>
+									<th>Status</th>
+									<th>Time Order</th>
+									<th>Action</th>
+								</tr>
 							</thead>
-							<tbody>
-							  <tr>
-								<td>
-								  <div class="d-flex align-items-center">
-									<img
-									  src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-users-icon-png-image_4144740.jpg"
-									  alt=""
-									  style="width: 45px; height: 45px"
-									  class="rounded-circle"
-									/>
-									<div class="ms-3">
-									  <p class="text-muted mb-0">#123</p>
-									</div>
-								  </div>
-								</td>
-								<td>
-								  <p class="fw-normal mb-1">Nguyen Ngo Tung Lam</p>
-								</td>
-					  
-								<td>
-								  <span class="badge badge-success rounded-pill d-inline"
-									>Delivered</span
-								  >
-								</td>
-								<td>300.000đ</td>
-								<td>
-								  <p class="fw-bold mb-1">17:20:54</p>
-								  <p class="text mb-0">14-07-2022</p>
-								</td>
-								<td>
-								  <button type="button" class="btn btn-link btn-sm btn-rounded">
-									View
-								  </button>
-								</td>
-							  </tr>
-							  <tr>
-								<td>
-								  <div class="d-flex align-items-center">
-									<img
-									  src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-users-icon-png-image_4144740.jpg"
-									  class="rounded-circle"
-									  alt=""
-									  style="width: 45px; height: 45px"
-									/>
-									<div class="ms-3">
-									  <p class="text-muted mb-0">#345</p>
-									</div>
-								  </div>
-								</td>
-								<td>
-								  <p class="fw-normal mb-1">Tung Lam</p>
-								</td>
-					  
-								<td>
-								  <span class="badge badge-info rounded-pill d-inline"
-									>On-way</span
-								  >
-								</td>
-								<td>49.000đ</td>
-								<td>
-								  <p class="fw-bold mb-1">17:01:00</p>
-								  <p class="text mb-0">13-07-2022</p>
-								</td>
-								<td>
-								  <button type="button" class="btn btn-link btn-sm btn-rounded">
-									View
-								  </button>
-								</td>
-							  </tr>
-							  <tr>
-								<td>
-								  <div class="d-flex align-items-center">
-									<img
-									  src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-users-icon-png-image_4144740.jpg"
-									  class="rounded-circle"
-									  alt=""
-									  style="width: 45px; height: 45px"
-									/>
-									<div class="ms-3">
-									  <p class="text-muted mb-0">#234</p>
-									</div>
-								  </div>
-								</td>
-								<td>
-								  <p class="fw-normal mb-1">Tran Tuan Hung</p>
-								</td>
-					  
-								<td>
-								  <span class="badge badge-danger rounded-pill d-inline">Cancel</span>
-								</td>
-								<td>25.000đ</td>
-								<td>
-								  <p class="fw-bold mb-1">17:32:00</p>
-								  <p class="text mb-0">12-07-2022</p>
-								</td>
-								<td>
-								  <button type="button" class="btn btn-link btn-sm btn-rounded">
-									View
-								  </button>
-								</td>
-							  </tr>
+							<tbody th:each="order : ${orderList}">
+								<tr>
+									<td>
+										<div class="d-flex align-items-center">
+											<div class="ms-3">
+												<p class="text-muted mb-0" th:text="${order.id}"></p>
+											</div>
+										</div>
+									</td>
+									<td>
+										<p class="fw-normal mb-1" th:text="${order.clientName}"></p>
+									</td>
+
+									<td>
+										<span class="badge badge-success rounded-pill d-inline"
+											th:text="${order.status}"></span>
+									</td>
+									<td>
+										<p class="fw-bold mb-1" th:text="${order.createdAt}">17:20:54</p>
+									</td>
+									<td>
+										<button type="button" class="btn btn-link btn-sm btn-rounded"
+											th:onclick="req([[${order.id}]])">
+											View
+										</button>
+									</td>
+								</tr>
 							</tbody>
-						  </table>
+							<script>
+								function req(id){
+									window.location.href = "/admin/panel/order?orderId="+id;
+								}
+							</script>
+						</table>
 					</div>
 
 					<div class="tab-pane fade" id="change-password" role="tabpanel">
-						<form action="" method="post"
+						<form action="/admin/change-pass" method="post"
 							oninput="this.rePassword.setCustomValidity(this.newPassword.value == this.rePassword.value ? '' : 'Not match with new password!')">
 							<h1 class="text-center">Change Password</h1>
 
 							<div class="form-outline m-4">
-								<input type="password" class="form-control" name="old-password" required />
+								<input type="password" class="form-control" name="password" required />
 								<label class="form-label">Old Password</label>
 							</div>
 
 							<div class="form-outline m-4">
-								<input type="password" class="form-control" name="new-password" id="newPassword" required />
+								<input type="password" class="form-control" name="newPassword" id="newPassword"
+									required />
 								<label class="form-label">New Password</label>
 							</div>
 
@@ -358,25 +323,25 @@
 								<button type="button" class="btn btn-dark btn-rounded m-1"
 									onclick="document.querySelector(`a.nav-link[href='#view-drink']`).click()">Cancel</button>
 							</div>
+						</form>
 					</div>
 					<!-- ADD BLOGS TAB -->
 					<div class="tab-pane fade" id="add-blog" role="tabpanel">
-						<form action="" method="post">
+						<form action="/admin/panel/blog" method="post">
 							<h1 class="text-center">Add Blog</h1>
 
 							<div class="form-outline m-4">
-								<input type="text" class="form-control" name="blog-title" required />
+								<input type="text" class="form-control" name="blogTitle" required />
 								<label class="form-label">Title</label>
 							</div>
 
 							<div class="form-outline m-4">
-								<!-- <input type="text" class="form-control" name="content-information" id="content-information" required /> -->
-								<textarea class="form-control" id="content-information" rows="6"></textarea>
+								<textarea class="form-control" id="content-information" rows="6" name="content"></textarea>
 								<label class="form-label">Content Information</label>
 							</div>
 
 							<div class="form-outline m-4">
-								<input type="text" class="form-control" id="link-image" required />
+								<input type="text" class="form-control" id="link-image" name="imageLink" required />
 								<label class="form-label">Image</label>
 							</div>
 
@@ -386,6 +351,7 @@
 								<button type="button" class="btn btn-dark btn-rounded m-1"
 									onclick="document.querySelector(`a.nav-link[href='#view-drink']`).click()">Cancel</button>
 							</div>
+						</form>
 					</div>
 
 					<!--  -->
@@ -393,24 +359,19 @@
 						<div class="container d-flex flex-column h-100">
 							<h1 class="text-center">The Sell Water House's Blogs</h1>
 
-							<div class="row row-cols-6">
-								<div class="col-2" th:each="category : ${categoryList}">
-									<img class="menu-img" th:src="${category.imageLink}" th:alt="${category.categoryName}"
-										th:onclick="changeCategory([[${category.id}]])">
-									<p class="menu-title" th:text="${category.categoryName}"></p>
-								</div>
-							</div>
+							<div class="web-drinks-list row flex-fill"
+								style="height: calc(100vh - 200px); overflow-y: auto;">
 
-							<div class="web-drinks-list row flex-fill" style="height: calc(100vh - 200px); overflow-y: auto;">
-
-								<div class="col-lg-3 col-md-4 col-sm-6 mb-1" th:each="drink:${drinkList}">
+								<div class="col-lg-3 col-md-4 col-sm-6 mb-1" th:each="blog:${blogList}">
 									<div class="card border">
-										<img th:src="${drink.imageLink}" class="card-img-top" alt="" />
+										<img th:src="${blog.imageLink}" class="card-img-top" height="200px;" />
 
 										<div class="card-body">
-											<h5 th:text="${drink.drinkName}" class="card-title"></h5>
-											<a href="#!" class="btn btn-primary web-drinks-list__blogs" th:data-drink-name="${drink.drinkName}"
-												th:data-drink-id="${drink.id}" th:data-drink-price="${drink.price}" th:data-drink-note="${drink.drinkName}">More</a>
+											<h5 th:text="${blog.blogTitle}" class="card-title"></h5>
+											<a href="#!" class="btn btn-primary web-drinks-list__blogs"
+												th:data-blog-title="${blog.blogTitle}" th:data-blog-id="${blog.id}"
+												th:data-blog-content="${blog.content}"
+												th:data-blog-image="${blog.imageLink}">More</a>
 										</div>
 									</div>
 								</div>
@@ -418,44 +379,46 @@
 							</div>
 						</div>
 
-						<!-- Edit-blogs -->
-						<div class="tab-pane fade" id="edit-blog" role="tabpanel">
-							<form action="" method="post" autocomplete="off">
-								<h1 class="text-center">Edit Blogs</h1>
-	
-								<div class="form-outline m-4">
-									<input type="text" id="edit-blog__blog-id" class="form-control" name="blogID" readonly required />
-									<label class="form-label">Blog ID</label>
-								</div>
-	
-								<div class="form-outline m-4">
-									<input type="text" id="edit-blog__blog-title" class="form-control" name="title" required />
-									<label class="form-label">Blog Title</label>
-								</div>
-	
-								<div class="form-outline m-4">
-									<textarea class="form-control" id="edit-blog__blog-content" rows="6" name="content"></textarea>
-									<label class="form-label">Content</label>
-								</div>
-	
-								<div class="form-outline m-4">
-									<input type="text" id="edit-blog__blog-image" class="form-control" name="imageLink" />
-									<label class="form-label">Image link</label>
-								</div>
-	
-								<div class="d-flex justify-content-between m-4">
-									<div>
-										<button type="submit" class="btn btn-primary btn-rounded m-1">Submit</button>
-										<input type="submit" class="btn btn-danger btn-rounded m-1" name="delete" value="delete"></input>
-									</div>
-	
-									<button type="button" class="btn btn-dark btn-rounded m-1"
-										onclick="document.querySelector(`a.nav-link[href='#view-blog']`).click()">Cancel</button>
-	
-								</div>
-							</form>
-						</div>
 
+					</div>
+					<!-- Edit-blogs -->
+					<div class="tab-pane fade" id="edit-blog" role="tabpanel">
+							<h1 class="text-center">Edit Blogs</h1>
+
+							<div class="form-outline m-4">
+								<input type="text" id="edit-blog__blog-id" class="form-control" name="blogID" readonly
+									required />
+								<label class="form-label">Blog ID</label>
+							</div>
+
+							<div class="form-outline m-4">
+								<input type="text" id="edit-blog__blog-title" class="form-control" name="blogTitle"
+									required />
+								<label class="form-label">Blog Title</label>
+							</div>
+
+							<div class="form-outline m-4">
+								<textarea class="form-control" id="edit-blog__blog-content" rows="6"
+									name="content"></textarea>
+								<label class="form-label">Content</label>
+							</div>
+
+							<div class="form-outline m-4">
+								<input type="text" id="edit-blog__blog-image" class="form-control" name="imageLink" />
+								<label class="form-label">Image link</label>
+							</div>
+
+							<div class="d-flex justify-content-between m-4">
+								<div>
+									<button type="submit" class="btn btn-primary btn-rounded m-1" onclick="updateBlog()">Submit</button>
+									<input type="submit" class="btn btn-danger btn-rounded m-1" name="delete"
+										value="delete" onclick="deleteBlog()"></input>
+								</div>
+
+								<button type="button" class="btn btn-dark btn-rounded m-1"
+									onclick="document.querySelector(`a.nav-link[href='#view-blog']`).click()">Cancel</button>
+
+							</div>
 					</div>
 				</div>
 				<!-- Pills content -->
@@ -476,7 +439,8 @@
 				document.getElementById('edit-drink__drink-id').value = item.dataset.drinkId;
 				document.getElementById('edit-drink__drink-name').value = item.dataset.drinkName;
 				document.getElementById('edit-drink__drink-price').value = item.dataset.drinkPrice;
-				document.getElementById('edit-drink__drink-note').value = item.dataset.drinkNote;
+				document.getElementById('edit-drink__drink-image-link').value = item.dataset.drinkImageLink;
+				document.getElementById('edit-drink__description').value = item.dataset.drinkDescription;
 
 				editDrinkTab.click();
 			});
@@ -492,7 +456,8 @@
 				document.getElementById('edit-blog__blog-id').value = item.dataset.blogId;
 				document.getElementById('edit-blog__blog-title').value = item.dataset.blogTitle;
 				document.getElementById('edit-blog__blog-content').value = item.dataset.blogContent;
-				document.getElementById('edit-blog__blog-image').value = item.dataset.blogImg;
+				document.getElementById('edit-blog__blog-image').value = item.dataset.blogImage;
+
 				editBlogTab.click();
 			});
 		});
