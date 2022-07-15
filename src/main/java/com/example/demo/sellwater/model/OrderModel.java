@@ -41,6 +41,9 @@ public class OrderModel {
     @Column
     private Date createdAt = new Date();
 
+    @Column 
+    private int discount = 0;
+
     @OneToMany(mappedBy = "id")
     private List<OrderItemModel> orderItem = new ArrayList<>();
 

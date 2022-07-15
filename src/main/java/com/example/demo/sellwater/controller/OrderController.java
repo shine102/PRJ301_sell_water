@@ -37,6 +37,7 @@ public class OrderController {
         OrderModel orderModel = orderService.fetchOrderById(orderId);
         model.addAttribute("orderId", orderId);
         model.addAttribute("order", order);
+        System.out.println(order.getDiscount());
         model.addAttribute("total", order.getTotalPrice());
         model.addAttribute("status", orderModel.getStatus());
         model.addAttribute("correct", true);
@@ -51,10 +52,11 @@ public class OrderController {
     @PostMapping("/order/create")
     public @ResponseBody String createOrder(@Valid @RequestBody OrderCreateDto order, Model model){
         String id = orderService.createOrder(order);
+        int discount = orderService.discount(orderService.searchOrder(id));
         if (id == null){
             return "error";
         } else {
-            return id;
+            return id + "," + discount;
         }
     }
 

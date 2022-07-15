@@ -38,7 +38,12 @@ function sendOrder(){
             }),
             contentType: "application/json",
             success: function(data){
-                alert("Order success, please save your order id: " + data);
+                data = data.split(",");
+                if(data[1] != 0){
+                    alert("Order success, please save your order id: " + data[0] + " and you will be discount 10% when you pay");
+                } else{
+                    alert("Order success, please save your order id: " + data[0]);
+                } 
                 removeOrder();
             }
         });

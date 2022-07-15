@@ -32,11 +32,26 @@ public class OrderService {
         return order;
     }
 
+    // discount (10%)
+    public int discount(OrderModel order){
+        int discount;
+        String phoneNumber = order.getPhone();
+        ArrayList<OrderModel> existedOrder = orderRepo.findAllByPhone(phoneNumber).orElse(new ArrayList<>());
+        
+        if (existedOrder.size() == 0 || existedOrder.size() > 3 ){
+            discount = 10;
+        } else{
+            discount = 0;
+        }
+        return discount;
+    }
+
     public String createOrder(@Valid OrderCreateDto order) {
         OrderModel orderModel = new OrderModel();
         orderModel.setAddress(order.getAddress());
         orderModel.setClientName(order.getClientName());
         orderModel.setPhone(order.getPhoneNumber());
+        orderModel.setDiscount(discount(orderModel));
         List<OrderItemModel> orderItemList = new ArrayList<OrderItemModel>(); 
         
         order.getItemList().forEach(item -> {
@@ -117,6 +132,7 @@ public class OrderService {
         orderCreateDto.setAddress(order.getAddress());
         orderCreateDto.setClientName(order.getClientName());
         orderCreateDto.setPhoneNumber(order.getPhone());
+        orderCreateDto.setDiscount(order.getDiscount());
         
         ArrayList<OrderItemDto> orderItemList = new ArrayList<OrderItemDto>();
         order.setOrderItem(orderItemRepo.findByOrder_Id(orderId));
